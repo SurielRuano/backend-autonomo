@@ -6,7 +6,7 @@ class Autos(View):
 
 	def get(self,request):
 
-		template_name = 'autos/autos.json'
+		template_name = 'automoviles/automoviles.html'
 
 		return render(request, template_name)
 
