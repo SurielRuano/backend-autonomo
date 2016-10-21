@@ -4,7 +4,7 @@ from django.db import models
 
 
 
-class CarModel(models.Model):
+class Car_model(models.Model):
 	name = models.CharField(max_length=60)
 	anio = models.DateField(auto_now=True)
 	doors_num = models.IntegerField ()

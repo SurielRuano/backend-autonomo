@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
 from automoviles import urls as autos
+from django.views.static import serve
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^automoviles/', include(autos)),
+    url(
+        regex=r'^media/(?P<path>.*)$',
+        view=serve,
+        kwargs={'document_root':settings.MEDIA_ROOT}),
 ]
