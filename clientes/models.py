@@ -4,8 +4,7 @@ from django.db import models
 # Create your models here.
 
 
-class Client(models.Model):	
-
+class Client(models.Model):
 	full_name = models.CharField(max_length=120)
 	address = models.TextField()
 	email = models.EmailField()
