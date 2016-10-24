@@ -20,6 +20,11 @@ class Client(models.Model):
 	salary = models.FloatField()
 	personal_references = models.TextField()
 
+
+	def __str__(self):
+
+		return self.full_name;
+
     
 
 
