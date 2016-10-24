@@ -90,8 +90,8 @@ ENV/
 
 # Ignorar Migraciones
 
-*/migrations
+#*/migrations
 
 #Ignorar base de datos
 
-db.sqlite3
+#db.sqlite3
