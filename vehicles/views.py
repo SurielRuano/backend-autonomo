@@ -1,3 +1,15 @@
 from django.shortcuts import render
+from django.views.generic import View
+from .models import Vehicle
+from django.core import serializers
 
-# Create your views here.
+
+
+class Vehicles(View):
+
+	def get(self,request):
+
+		template_name = 'vehicles/vehicles_json.html'
+		context = {'datos':serializers.serialize("json", Vehicle.objects.all())}
+
+		return render(request, template_name, context)
