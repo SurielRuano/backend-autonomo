@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'api',
+    'vehicles',
+    'clients',
+    'vehicles_finances',
 ]
 
 MIDDLEWARE = [

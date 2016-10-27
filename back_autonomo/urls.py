@@ -16,14 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
-from automoviles import urls as autos
+from vehicles import urls as vehicles
 from main import urls as urlsMain
 from django.views.static import serve
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^automoviles/', include(autos)),
+    url(r'^vehiculos/', include(vehicles)),
     url(r'^', include(urlsMain)),
     url(
         regex=r'^media/(?P<path>.*)$',
