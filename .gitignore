@@ -98,5 +98,5 @@ ENV/
 
 #ignorar imagenes de vehiculos (comentar en producion)
 
-#*/assets/trademark/
-#*/assets/vehicles/
+*/assets/trademark/
+*/assets/vehicles/
