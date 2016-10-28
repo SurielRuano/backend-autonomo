@@ -52,10 +52,10 @@ class Vehicle(models.Model):
 	name = models.CharField(max_length=60)
 	anio = models.DateField(auto_now=True)	
 	description_short = models.TextField()	
-	img_front = models.ImageField(upload_to="assets", blank=True, null=True)
-	img_left = models.ImageField(upload_to="assets", blank=True, null=True)
-	img_right = models.ImageField(upload_to= "assets", blank=True, null=True)
-	img_back = models.ImageField(upload_to= "assets", blank=True, null=True)
+	img_front = models.ImageField(upload_to="assets/vehicles", blank=True, null=True)
+	img_left = models.ImageField(upload_to="assets/vehicles", blank=True, null=True)
+	img_right = models.ImageField(upload_to= "assets/vehicles", blank=True, null=True)
+	img_back = models.ImageField(upload_to= "assets/vehicles", blank=True, null=True)
 	
 
 	def __str__(self):
