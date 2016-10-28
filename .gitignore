@@ -95,3 +95,8 @@ ENV/
 #Ignorar base de datos
 
 db.sqlite3
+
+#ignorar imagenes de vehiculos (comentar en producion)
+
+*/assets/trademark/
+*/assets/vehicles/
