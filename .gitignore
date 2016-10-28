@@ -90,13 +90,13 @@ ENV/
 
 # Ignorar Migraciones
 
-*/migrations
+#*/migrations
 
 #Ignorar base de datos
 
-db.sqlite3
+#db.sqlite3
 
 #ignorar imagenes de vehiculos (comentar en producion)
 
-*/assets/trademark/
-*/assets/vehicles/
+#*/assets/trademark/
+#*/assets/vehicles/
