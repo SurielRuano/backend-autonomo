@@ -1,0 +1,289 @@
+.l-bg-silver{
+
+  background-color: #E5E9ED;
+}
+
+/* Carousel base class */
+
+section.l-slider{
+  position:relative;
+}
+
+
+
+.carousel {
+  height: 100vh;
+  margin-bottom: 58px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+  position:absolute;
+  top:40%;
+  transform: translateY(-50%);
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 100vh;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+
+  .featurette-heading {
+    font-size: 100px;
+  }
+
+}
+
+
+  .sectionFormat{
+
+display:block;
+
+}
+
+
+
+
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
+  .sectionFormat{
+
+      display:block;
+      height:100vh;
+      position: relative;
+      top:0;
+      bottom:0;
+      width: 100%;
+  }
+
+  .vertical-align{
+
+    vertical-align: middle;
+width:100%;
+    display: inline-block;
+    height:50%;
+    position: absolute;
+    top: 0;
+    bottom:0%;
+    margin: auto;
+
+}
+}
+
+
+
+
+.lbtn-white{
+
+    color: #fff;
+    background-color: rgba(255,255,255,.5);
+    border-color: #fff;
+}
+
+.lbtn-white:hover, .lbtn-white:active{
+
+    color: #fdfdfd;
+    background-color: rgba(255,255,255,.3) !important;
+    border-color: #fff;
+}
+
+.slider1{
+
+  background: url('http://eh5153jjbilvhwnq18672ksy.wpengine.netdna-cdn.com/wp-content/uploads/2015/08/happy-driver-sunlinght.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.slider2{
+
+  background: url('http://replacecarkey.org/wp-content/uploads/2014/10/car-key-replacement.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.slider3{
+
+  background: url('/Assets/img/autito.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.sliderText h1{
+
+  font-weight: 900;
+  font-size: 4em;
+}
+/*clases del slida*/
+
+.tittle{
+  font-family: 'Comfortaa', cursive;
+  text-align:center;
+  font-size:70px;
+
+}
+
+.textin{
+  font-family: 'Poiret One', cursive;
+  text-align:center;
+}
+
+
+@media (min-width: 1200px) {
+  .tittle{
+    font-size:85px;
+  }
+
+.textin{
+  font-size: 35px;
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .tittle{
+    font-size:200px;
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .tittle{
+    font-size:80px;
+  }
+
+  .textin{
+  font-size: 50px;
+}
+
+}
+
+@media (max-width: 992px) {
+  .tittle{
+    font-size:50px;
+  }
+
+
+  .textin{
+  font-size: 30px;
+}
+
+}
+
+@media (max-width: 768px) {
+  .tittle{
+    font-size:40px;
+  }
+
+  .textin{
+  font-size: 20px;
+}
+
+
+}
+
+
+
+
+
+
+
+.cotizador{
+  font-family: 'Myriad pro';
+}
+
+.detalles{
+  margin-top:2%;
+}
+
+/* Estan canceladas porque en resolucion md afectan al GRID de bootstrap  */
+
+/* .paso{
+  font-family: 'Varela Round', sans-serif;
+}
+.pasos{
+  font-family: 'Exo', sans-serif;
+  
+}
+.pasito{
+    font-family: 'Myriad pro';
+    
+} */
+.icon:hover{
+  color:transparent;
+}
+.icon:hover .ikon{
+  color:#01579b;
+  transition:1s ease;
+}
+.promo{
+ 
+  font-family: 'Comfortaa', cursive;
+}
+.cliente{
+  widows: 80px;
+  border-radius:50%;
+}
+.exitos{
+  display:block;
+  height:200px;
+  text-align:center;
+  border-radius:15px;
+ 
+}
+/*Termina comentarios*/
+
+
