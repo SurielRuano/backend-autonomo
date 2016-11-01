@@ -5,6 +5,6 @@ from . import views
 urlpatterns =[
 
 
-	url(r'^$',views.Vehicles.as_view(), name= 'autos-json'),
+	url(r'^$',views.Vehicles.as_view(), name= 'catalog'),
 
 ]
