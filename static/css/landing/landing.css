@@ -1,3 +1,5 @@
+{%load static%}
+
 .l-bg-silver{
 
   background-color: #E5E9ED;
@@ -157,7 +159,7 @@ width:100%;
 
 .slider3{
 
-  background: url('/Assets/img/autito.jpg');
+  background: url("../../img/autito.jpg");
   background-size: cover;
   background-position: center;
 }
