@@ -9,13 +9,14 @@ class Vehicles(View):
 
 	def get(self,request):
 
-		template_name = 'vehicles/vehicles.json'
+		template_name = 'vehicles/catalog.html'
 
 		queryset = Vehicle.objects.all()
 
 		# [list(Vehicle.tobjects.all()) for Vehicle in queryset]
 
-		context = {'datos':serializers.serialize("json", queryset)}
+		#context = {'datos':serializers.serialize("json", queryset)}
+		context = {'vehicles':queryset,"saludo":"hola culeros"}
 
 
 		return render(request, template_name, context)

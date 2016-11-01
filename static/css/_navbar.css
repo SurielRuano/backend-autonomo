@@ -1,0 +1,42 @@
+.navbar {
+	background-color: black !important;
+}
+.pointer {
+	cursor: pointer;
+}
+
+.textnavv {	
+	margin-top: 12px;
+}
+
+.textnavv a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.padd {
+	margin-right: 10px;
+}
+
+.btn-circle{
+	font-size: 1.5rem;
+	background: none !important;
+	border: 1px solid white !important;
+	border-radius: 10px;
+	color:#fff;
+}
+
+.btn:focus{
+	background: black;
+	color:white;
+	border: 1px solid white;
+}
+
+.imagen{
+	width: 40px;
+	margin-left: 25px;
+}
+
+/*.imagenn {
+	margin-bottom: 50px;
+}*/

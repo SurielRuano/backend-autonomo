@@ -23,7 +23,7 @@ from django.views.static import serve
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^vehiculos/', include(vehicles)),
+    url(r'^catalogo/', include(vehicles)),
     url(r'^', include(urlsMain)),
     url(
         regex=r'^media/(?P<path>.*)$',

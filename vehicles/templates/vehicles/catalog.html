@@ -1,0 +1,123 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block styles%}
+
+    <link rel="stylesheet" href="{%static 'css/catalog/_catalog.css'%}">
+{%endblock styles%}
+
+{%block content%}
+<div class="container" style="min-height:400px">
+    <div class="row card-container-master">
+
+    <div class="titulo">            
+            <h1> Encuentra tu auto ideal </h1>
+        </div> 
+
+    <div class="col-md-3">
+
+
+
+        <span>Encuentra facilmente: </span>
+        <hr>
+         <select class="form-control" >
+            <option value="">Marca</option>       
+            <option value="nissan">Nissan</option>       
+            <option value="chevrolet">Chevrolet</option>       
+            <option value="volkswagen">Volkswagen</option>       
+        </select>
+        <br>
+
+        <input class="form-control" type="text" placeholder="¿Qué auto o marca buscas?" >
+        <br>
+       
+        <select class="form-control" >
+            <option value=""># Cilindros</option>       
+            <option value="4cil">4 cil</option>       
+            <option value="6cil">6 cil</option>       
+         
+        </select>
+        
+
+
+    </div>
+
+
+   
+
+
+
+
+
+<div class="col-md-9">
+    
+    <div class="row">
+
+    {%for vehicle in vehicles%}
+
+             <div class="col-md-3">
+  
+
+                            <div class="card-container">
+                                 <div class="card">
+                                     <div class="front">
+                                         <div class="cover" style="background-image:url(/media/{{vehicle.img_front}})">
+                                             
+                                         </div>
+                                         
+                                         <div class="content">
+                                             <div class="main">
+                                                 <h3 class="name">{{vehicle.name}}</h3>
+                                                 <p class="profession">{{vehicle.trademark}}</p>
+
+                                                 
+                                             </div>
+                                             
+                                         </div>
+                                     </div> <!-- end front panel -->
+                                     <div class="back">
+                                         <div class="header">
+                                             <h5 class="motto">"Automovil de trabajo"</h5>
+                                         </div>
+                                         <div class="content">
+                                             <div class="main">
+                                                 <h4 class="text-center">Descripcion</h4>
+                                                 <p class="text-center">4 cilindros</p>
+                                                 <p class="text-center">{{vehicle.description_short}}</p>
+
+                                                 <div class="stats-container">
+                                                   
+                                                     <a class="btn btn-block btn-primary" href="/mensualidad/{{vehicle.pk}}">Adquierelo Ahora</a>
+                                                 </div>
+
+                                             </div>
+                                         </div>
+                                   
+                                     </div> <!-- end back panel -->
+                                 </div><!-- end card -->
+                             </div> <!-- end card-container  -->                  
+
+                </div>
+
+        {% empty %}
+
+        <div class="col-md-12 text-center">
+        <br>
+        <br>
+        <br>
+        <br>
+            <h2>no hay vehiculos en el catalogo</h2>
+        </div> 
+        
+        {%endfor%}
+
+
+    </div>
+</div>
+
+
+    </div>
+</div>
+
+{%endblock content%}
+

@@ -1,10 +1,267 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Autonomo</title>
-</head>
-<body>
-	<h1>Bienvenido a Autonomo</h1>
-</body>
-</html>
+{%extends 'base.html' %}
+{%load static%}
+
+{%block styles%}
+	
+	<link rel="stylesheet" href="{%static 'css/landing/landing.css'%}">
+
+{%endblock styles%}
+
+
+
+{%block content%}
+
+
+		<section style="margin:0%; padding:0%;" class="l-slider l-bg-silver">
+			    <div id="Carousel" class="carousel slide" data-ride="carousel">
+			        <!-- Indicators -->
+			        <div class="carousel-inner sliderText" role="listbox">
+			            
+			            <div class="item active slider1">
+			               
+			                 <!--     <img width="100%"class="first-slide" src="http://eh5153jjbilvhwnq18672ksy.wpengine.netdna-cdn.com/wp-content/uploads/2015/08/happy-driver-sunlinght.jpg" alt="First slide">
+			                                  -->
+			               
+			                <div class="container">
+			                    <div class="detalles carousel-caption">
+
+			                        <span class='tittle'>AUTONOMO</span>
+			                        <p class='textin'>Cotiza ahora mismo tu auto con el mejor financiamiento y tasas de interés del mercado en México.</p>
+			                        <p><a class=" cotizador btn btn-lg lbtn-white" href="#/cotizacion" role="button" style="background-color: transparent" style="border-color:red">Cotizar Ahora</a></p>
+			                    </div>
+			                </div>
+			            </div>
+			            <div class="item slider2">
+			        <!--         <img class="second-slide" src="http://replacecarkey.org/wp-content/uploads/2014/10/car-key-replacement.jpg" alt="Second slide"> -->
+			                <div class="container">
+			                    <div class="detalles carousel-caption">
+			                        <span class='tittle'>Automóviles del año</span>
+			                        <p class='textin'>Autonomo pone a tu alcance automóviles último modelo, arma tu plan de pagos y obten tu auto.</p>
+			                    </div>
+			                </div>
+			            </div>
+			            <div class="item slider3">
+			                <!-- <img class="third-slide" src="Assets/img/index_backgroud_3.jpg" alt="Third slide"> -->
+			                <div class="container">
+			                    <div class="detalles carousel-caption">
+			                        <span class='tittle'>Sorteos y promociones</span>
+			                        <p class='textin'>¿Ya terminiaste de pagar tu automóvil? Entra a nuestros sorteos y gana uno de los diferentes premios.</p>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			      <!--  <a class="left carousel-control" href="#Carousel" role="button" data-slide="prev">
+			          <span class="sr-only">Previous</span>
+			      </a>
+			      <a class="right carousel-control" href="#Carousel" role="button" data-slide="next">
+			          <span class="sr-only">Next</span>
+			      </a>  -->
+			    </div>
+
+
+			                <section class="sectionFormat l-bg-silver">
+			                    <div class="container vertical-align">
+			                        <row class="col-md-12 text-center">
+			                            
+
+			                                <div class="col-md-12 text-center">
+			                                    
+			                                       <h1 class='pasos'>En 4 sencillos pasos podras solicitar tu auto</h1>  
+			                                </div>
+
+			                         
+
+
+			                        </row>
+
+			                        <br>
+			                        <br>
+			                        <br>
+			                        <br>
+			                        <br>
+			                        <br>
+
+			                        <div class="row text-center">
+			                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+			                                <span class="icon fa-stack fa-4x">
+			                                    <i class=" fa fa-circle fa-stack-2x text-default"></i>
+			                                    <i class="ikon fa fa-car fa-stack-1x fa-inverse"></i>
+			                                </span>
+			                                
+			                                <h3 class='pasos'>Paso 1 "Cotiza tu auto"</h3>
+			                                <h5 class='pasito'>Click en el boton "Cotiza tu auto" para seleccionar el auto que quieras.</h5>
+			                            </div>
+			                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+			                               
+			                                <span class="icon fa-stack fa-4x">
+			                                    <i class=" fa fa-circle fa-stack-2x text-default"></i>
+			                                    <i class="ikon fa fa-credit-card fa-stack-1x fa-inverse"></i>
+			                                </span>
+			                                <h3 class='pasos'>Paso 2 "Escoge tu plan" </h3>
+			                                <h5 class='pasito'>Escoje tu mensualidad de pago que se ajuste a tu presupuesto.</h5>
+			                            </div>
+
+			                             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+			                               
+			                                <span class="icon fa-stack fa-4x">
+			                                    <i class=" fa fa-circle fa-stack-2x text-default"></i>
+			                                    <i class="ikon fa fa-user fa-stack-1x fa-inverse"></i>
+			                                </span>
+			                                <h3 class='pasos'>Paso 3 "Escoge tu plan" </h3>
+			                                <h5 class='pasito'>Agrega los datos necesarios para completar tu perfil.</h5>
+			                            </div>
+
+
+			                             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+			                               
+			                                <span class="icon fa-stack fa-4x">
+			                                    <i class=" fa fa-circle fa-stack-2x text-default"></i>
+			                                    <i class="ikon fa fa-smile-o fa-stack-1x fa-inverse"></i>
+			                                </span>
+			                                <h3 class='pasos'>Paso 4 "Escoge tu plan" </h3>
+			                                <h5 class='pasito'>Disfruta tu auto y completa todas tus mensualidades.</h5>
+			                            </div>                       
+			                        
+
+			                        
+			                        </div>
+			                    </div>
+			                </section>
+			                  
+
+			   
+			</section>
+
+
+			<section class="sectionFormat">
+			  <div class=" promo container vertical-align">
+			        
+			        <div class="row">
+			            
+			            <div class="col-md-12 text-center">
+			                <h1>Obten el auto de tus sueños</h1>
+			                
+			            </div>
+			            <div class="col-md-offset-2 col-md-8">
+			                <img src="{% static 'img/autos-portada.png' %}" width="100%" alt="">
+			            </div>
+			            <div class="col-md-12 text-center">
+			                <h1>Te ofrecemos las mejores facilidades del mercado</h1>
+			                <p  >En autonomo evitarás los trámites engorrosos, tendrás la oportunidad de tener tu auto propio con el mínimo de intereses.</p>
+			                
+			            </div>
+
+			        </div>
+			    </div>
+			    
+
+			</section>
+
+			<section class="sectionFormat">
+			  <div class="container vertical-align">
+			        
+			        <div class="row text-center">
+			            
+			            <div class="col-md-offset-3 col-md-6">
+			               <img width="100%" src="http://www.mynewcarloan.com/wp-content/uploads/2015/06/MNCL-banner-01.png">
+			            </div>
+
+			            <div class="col-md-12">
+			                <h2>Autonomo <small>te estamos esperando</small></h2>
+			                <h1>
+			                <strong>Tu puedes ser el proximo en estrenar!</strong>
+			            </h1>
+			            </div>
+			           
+
+			        </div>
+			    </div>
+			    
+
+			</section>
+
+
+
+			<section class="sectionFormat ">
+			    <div class="container">
+			        
+			            <div class="row">
+			                    <div class="col-md-12 text-center">
+			                        
+			                        <h2 class="promo">Clientes satisfechos</h2>
+			                    </div>
+			            </div>
+			                        <br>
+			                        <br>
+			                        <br>
+			                        <br>
+			                        <br>
+			                        <br>
+			              <div class="row comentarios">
+			                      <div class=' col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1'>
+
+			                            <div class='exitos casos col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+			                                <!-- <h3 class='promo'>Suriel Ruano
+			                                </h3> -->
+			                                <img  class='cliente img-rounded' src="http://myinstantcms.ru/images/img13.png">
+			                                <br>
+			                                <br>
+			                                <p>
+			                                    "Me sentí muy feliz cuando me llamaron para comunicarme que al dia siguiente me harían entrega de mi ikon."
+			                                </p>
+			                                <br>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                            </div>
+			                             <div class='exitos casos col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-12 col-xs-12'>
+			                                <!-- <h3 class='promo'>Suriel Ruano
+			                                </h3> -->
+			                                <img class='cliente' src="http://myinstantcms.ru/images/img14.png">
+			                                <br>
+			                                <br>
+			                                <p>
+			                                    "Me sentí muy feliz cuando me llamaron para comunicarme que al dia siguiente me harían entrega de mi ikon."
+			                                </p>
+			                                <br>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+
+
+			                            </div>
+			                             <div class='exitos casos col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-12 col-xs-12'>
+			                               <!--  <h3 class='promo'>Suriel Ruano
+			                               </h3> -->
+			                                <img class='cliente' src="http://myinstantcms.ru/images/img15.png">
+			                                <br>
+			                                <br>
+			                                <p>
+			                                    "Me sentí muy feliz cuando me llamaron para comunicarme que al dia siguiente me harían entrega de mi ikon."
+			                                </p>
+			                                <br>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                                <i class="fa fa-star" aria-hidden="true"></i>
+			                            </div>
+			                    </div>
+			     
+			                 </div>
+
+
+			    </div>
+
+			    
+
+			</section>
+
+
+
+
+{%endblock content%}
