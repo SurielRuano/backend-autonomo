@@ -7,3 +7,8 @@ body {
 
 	margin-top: 80px;
 }
+
+.adjust{
+
+	min-height: 70vh;
+}

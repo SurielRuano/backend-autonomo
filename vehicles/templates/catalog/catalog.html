@@ -7,7 +7,7 @@
 {%endblock styles%}
 
 {%block content%}
-<div class="container" style="min-height:400px">
+<div class="container adjust">
     <div class="row card-container-master">
 
     <div class="titulo">            
@@ -68,7 +68,9 @@
                                          <div class="content">
                                              <div class="main">
                                                  <h3 class="name">{{vehicle.name}}</h3>
-                                                 <p class="profession">{{vehicle.trademark}}</p>
+                                                 <h3 class="name">{{vehicle.Vehicle_version}}</h3>
+                                                 <p class="profession">{{vehicle.trademark.name}}</p>
+                                                
 
                                                  
                                              </div>
@@ -87,7 +89,7 @@
 
                                                  <div class="stats-container">
                                                    
-                                                     <a class="btn btn-block btn-primary" href="/mensualidad/{{vehicle.pk}}">Adquierelo Ahora</a>
+                                                     <a class="btn btn-block btn-primary" href="detalle/{{vehicle.pk}}">Adquierelo Ahora</a>
                                                  </div>
 
                                              </div>
