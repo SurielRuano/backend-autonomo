@@ -1,9 +1,6 @@
-from __future__ import unicode_literals
- 
+from __future__ import unicode_literals 
 from django.db import models
 from django.conf import settings
-
-
 
 
 class trademark(models.Model):
@@ -47,7 +44,7 @@ class Vehicle_version(models.Model):
 class Vehicle(models.Model):
 
 	trademark = models.ForeignKey(trademark)	
-	vehicle_version = models.ManyToManyField(Vehicle_version)
+	vehicle_version = models.ManyToManyField(Vehicle_version,related_name="vehicles")
 	vehicle_color = models.ManyToManyField(vehicle_color)
 	name = models.CharField(max_length=60)
 	anio = models.DateField(auto_now=True)	
