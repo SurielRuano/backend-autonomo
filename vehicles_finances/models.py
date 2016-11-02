@@ -5,11 +5,29 @@ from clients.models import Client
 from vehicles.models import Vehicle
 # Create your models here.
 
+class StockExchange(models.Model):
+	name = models.CharField (max_length=200)
+	description = models.TextField()
+	maximum_number_customers = models.IntegerField()
+	##Tipo de mensualidad 60 o 40 mensualidades
+	monthly_payment = models.CharField(max_length=200)
+
+	class Meta:
+		verbose_name = "StockExchange"
+		verbose_name_plural = "StockExchanges"
+
+	def __str__(self):
+		return self.name
 
 class VehicleBooking (models.Model):
+	BOOL_CHOICES = ((True, 'Adjudicado'),(False, 'No Adjudicado'))
 	id_client = models.ForeignKey(Client, related_name='vehiclebook')
 	id_vehicle = models.ForeignKey(Vehicle, related_name='vehiclebook')
+	id_stock = models.ForeignKey(StockExchange, related_name='vehiclebook')
 	price = models.FloatField()
+	deadline = models.DateField()
+	adjudication = models.BooleanField(choices=BOOL_CHOICES, default=False)
+
 
 	class Meta:
 		verbose_name = "VehicleBooking"
@@ -18,14 +36,33 @@ class VehicleBooking (models.Model):
 	def __str__(self):
 		return self.id_client
 
-
-class MonthlyPayment(models.Model):
-	monthly = models.CharField(max_length=100)
-	id_vehiclebooking = models.ForeignKey(VehicleBooking, related_name='monthlypayment')
+class DetailPayment (models.Model):
+	id_vehiclebooking = models.ForeignKey(VehicleBooking, related_name='detailpayment')
+	concept = models.CharField(max_length=250)
+	#cantidad
+	amount = models.FloatField()
+	observations = models.TextField()
+	date_payment = models.DateField()
+	reference_payment = models.IntegerField()
 
 	class Meta:
-		verbose_name = "MonthlyPayment"
-		verbose_name_plural = "MonthlyPayments"
+		verbose_name = "DetailPayment"
+		verbose_name_plural = "DetailPayments"
 
 	def __str__(self):
-		return self.monthly
+		return self.id_vehiclebooking
+
+
+
+
+
+# class MonthlyPayment(models.Model):
+# 	monthly = models.CharField(max_length=100)
+# 	id_vehiclebooking = models.ForeignKey(VehicleBooking, related_name='monthlypayment')
+
+# 	class Meta:
+# 		verbose_name = "MonthlyPayment"
+# 		verbose_name_plural = "MonthlyPayments"
+
+# 	def __str__(self):
+# 		return self.monthly
