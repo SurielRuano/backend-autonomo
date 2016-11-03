@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block title%}
+	Registro
+{%endblock title%}
+
+{%block styles%}
+	<style type="text/css">
+  		section { padding-bottom: 600px; }
+	</style>
+{%endblock styles%}
+
+{%block content%}
+	<section>
+		<div class="container-fluid">
+			<div class="row">
+				<form role="form" action="." method="post">
+					{%csrf_token%}
+					<div class="form-group">
+						{{form.as_p}}
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+{%endblock content%}
