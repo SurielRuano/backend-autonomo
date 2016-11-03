@@ -29,11 +29,13 @@ class Detail(View):
 
 		template_name = 'vehicle_detail/detail.html'
 
-		queryset = Vehicle.objects.filter(pk=id)		
+		queryset = Vehicle.objects.filter(pk=id)
+
+		ver = Vehicle_version.objects.all().filter(vehicle = queryset)		
 		
 		# version = Vehicle_version.vehicle.all()
 		
-		context = {'vehicle':queryset}
+		context = {'vehicle':queryset, 'version':ver}
 
 
 		return render(request, template_name, context)
