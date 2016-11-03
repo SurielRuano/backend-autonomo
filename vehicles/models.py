@@ -31,7 +31,7 @@ class Vehicle(models.Model):
 
 
 class Vehicle_version(models.Model):
-	vehicle = models.ForeignKey(Vehicle)	
+	vehicle = models.ForeignKey(Vehicle, related_name='version')	
 	version = models.CharField(max_length=60)
 	airbag = models.BooleanField(default=False)
 	sunroof = models.BooleanField(default=False)
