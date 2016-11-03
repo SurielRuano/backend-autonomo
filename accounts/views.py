@@ -3,9 +3,9 @@ from django.views.generic import View
 from .forms import UserRegistrationForm
 
 # Create your views here.
-class Registration (View):
+class RegistryView (View):
 	def get(self, request):
-		template_name = "registration/registry"
+		template_name = "registration/registry.html"
 		form = UserRegistrationForm()
 		context = {
 		'form':form,
