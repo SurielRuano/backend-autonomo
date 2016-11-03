@@ -11,14 +11,27 @@ class trademark(models.Model):
 		return self.name
 
 
-class vehicle_color(models.Model):
-	color = models.CharField(max_length=60)
+
+
+
+class Vehicle(models.Model):
+
+	trademark = models.ForeignKey(trademark)	
+	name = models.CharField(max_length=60)
+	anio = models.DateField(auto_now=True)	
+	description_short = models.TextField()	
+	img_front = models.ImageField(upload_to="assets/vehicles", blank=True, null=True)
+	img_left = models.ImageField(upload_to="assets/vehicles", blank=True, null=True)
+	img_right = models.ImageField(upload_to= "assets/vehicles", blank=True, null=True)
+	img_back = models.ImageField(upload_to= "assets/vehicles", blank=True, null=True)
+	
 
 	def __str__(self):
-		return self.color
+		return self.name
 
 
 class Vehicle_version(models.Model):
+	vehicle = models.ForeignKey(Vehicle)	
 	version = models.CharField(max_length=60)
 	airbag = models.BooleanField(default=False)
 	sunroof = models.BooleanField(default=False)
@@ -41,22 +54,6 @@ class Vehicle_version(models.Model):
 		return self.version
 
 
-class Vehicle(models.Model):
-
-	trademark = models.ForeignKey(trademark)	
-	vehicle_version = models.ManyToManyField(Vehicle_version)
-	vehicle_color = models.ManyToManyField(vehicle_color)
-	name = models.CharField(max_length=60)
-	anio = models.DateField(auto_now=True)	
-	description_short = models.TextField()	
-	img_front = models.ImageField(upload_to="assets/vehicles", blank=True, null=True)
-	img_left = models.ImageField(upload_to="assets/vehicles", blank=True, null=True)
-	img_right = models.ImageField(upload_to= "assets/vehicles", blank=True, null=True)
-	img_back = models.ImageField(upload_to= "assets/vehicles", blank=True, null=True)
-	
-
-	def __str__(self):
-		return self.name
 
 
 
