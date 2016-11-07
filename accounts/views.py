@@ -25,3 +25,11 @@ class RegistryView (View):
 			'form':new_user_f,
 			}
 			return redirect(request, template_name, context)
+
+
+class ProfileView(View):
+	def get(self, request):
+		template_name= "registration/profile.html"
+		return render(request, template_name)
+
+		

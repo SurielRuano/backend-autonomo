@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import VehicleBooking, DetailPayment, StockExchange
+from .models import VehicleBooking, DetailPayment, StockExchange, SettingsFinantial
 
 # Register your models here.
 class VehicleBookingAdmin(admin.ModelAdmin):
@@ -23,3 +23,4 @@ class StockExchangeAdmin (admin.ModelAdmin):
 admin.site.register(VehicleBooking, VehicleBookingAdmin)
 admin.site.register(DetailPayment, DetailPaymentAdmin)
 admin.site.register(StockExchange, StockExchangeAdmin)
+admin.site.register(SettingsFinantial)
