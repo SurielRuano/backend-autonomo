@@ -53,7 +53,16 @@ class DetailPayment (models.Model):
 		return self.id_vehiclebooking
 
 
+class SettingsFinantial(models.Model):
+	discount_factor = models.FloatField()
+	administration_fee = models.FloatField()
 
+	class Meta:
+		verbose_name = "SettingsFinantial"
+		verbose_name_plural = "SettingsFinantials"
+
+		def __str__(self):
+			return (self.discount_factor, self.administration_fee)
 
 
 # class MonthlyPayment(models.Model):
