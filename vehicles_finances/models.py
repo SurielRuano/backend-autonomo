@@ -56,6 +56,7 @@ class DetailPayment (models.Model):
 class SettingsFinantial(models.Model):
 	update_factor = models.FloatField()
 	administration_fee = models.FloatField()
+	inscription_fee = models.FloatField()
 
 	class Meta:
 		verbose_name = "SettingsFinantial"

@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 
 
+
 class trademark(models.Model):
 	name = models.CharField(max_length=60)
 	logo = models.ImageField(upload_to="assets/trademark", blank=True, null=True)
@@ -30,6 +31,8 @@ class Vehicle(models.Model):
 		return self.name
 
 
+
+
 class Vehicle_version(models.Model):
 	vehicle = models.ForeignKey(Vehicle, related_name='version')	
 	version = models.CharField(max_length=60)
@@ -48,6 +51,27 @@ class Vehicle_version(models.Model):
 	description_long = models.TextField()
 	doors_num = models.IntegerField ()
 	cylinders_num = models.IntegerField()
+	
+
+
+
+	def fee_mounth_48(self):
+
+		fee_48 = (((self.price)/48)*(1.08))*(1.03)
+
+		return fee_48
+
+	def fee_mounth_60(self):
+
+		fee_60 = (((self.price)/60)*(1.08))*(1.03)
+
+		return fee_60
+
+
+
+
+	fee48 = property(fee_mounth_48)
+	fee60 = property(fee_mounth_60)
 	
 
 	def __str__(self):
