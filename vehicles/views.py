@@ -35,16 +35,6 @@ class Detail(View):
 
 		version = Vehicle_version.objects.all().filter(vehicle = vehicle)
 
-		
-		
-
-
-	
-
-
-			
-
-		
 		context = {'vehicle':vehicle, 'version':version}
 
 
