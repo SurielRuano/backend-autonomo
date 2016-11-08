@@ -12,17 +12,27 @@
 {%endblock styles%}
 
 {%block content%}
-	<section>
-		<div class="container-fluid">
+
+
+		<div class="container">
 			<div class="row">
+			<h1 class="text-center">Registro</h1>
+			<br>
 				<form role="form" action="." method="post">
 					{%csrf_token%}
-					<div class="form-group">
+					<div class="form-group text-center">
 						{{form.as_p}}
 						<input type="submit" name="nuevo" placeholder="Crear Usuario">
 					</div>
 				</form>
+
+				<br>
+
+			<p class="text-center">Regresa a Iniciar Sesion <a href="/accounts/login">Aqui!</a></p>
 			</div>
 		</div>
-	</section>
+
+		&nbsp;<br>
+
+	
 {%endblock content%}
