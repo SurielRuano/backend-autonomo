@@ -54,7 +54,7 @@ class DetailPayment (models.Model):
 
 
 class SettingsFinantial(models.Model):
-	discount_factor = models.FloatField()
+	update_factor = models.FloatField()
 	administration_fee = models.FloatField()
 
 	class Meta:
@@ -62,7 +62,7 @@ class SettingsFinantial(models.Model):
 		verbose_name_plural = "SettingsFinantials"
 
 		def __str__(self):
-			return (self.discount_factor, self.administration_fee)
+			return (self.update_factor, self.administration_fee)
 
 
 # class MonthlyPayment(models.Model):
