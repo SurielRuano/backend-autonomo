@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
-from vehicles.models import Vehicle
+from vehicles.models import Vehicle_version
 from django.conf import settings
 
 
@@ -34,7 +34,7 @@ class Client(models.Model):
 
 class Garage(models.Model):
 	user_garage = models.ForeignKey(Client, related_name='garage')
-	user_vehicle = models.ForeignKey(Vehicle, related_name='garage')
+	user_vehicle = models.ForeignKey(Vehicle_version, related_name='garage')
 
 	class Meta:
 		verbose_name = "Garage"
