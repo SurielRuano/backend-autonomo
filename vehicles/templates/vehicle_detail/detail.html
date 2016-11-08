@@ -1,5 +1,6 @@
 {%extends "base.html"%}
 {%load static%}
+{% load humanize %}
 
 {%block styles%}
 
@@ -66,8 +67,10 @@
 
 
 		</div>
-
+	
 		<div class="row">
+
+			<h3 class="text-center">Versiones</h3>
 
 			<div class="panel-group" id="accordion">
 
@@ -81,18 +84,19 @@
 					<div class="panel-heading">
 				      <h4 class="panel-title text-center">
 				        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
-				        {{vehicle.name | upper}} VERSION {{ver.version | upper}}</a>
+				        {{vehicle.name | upper}} - {{ver.version | upper}}</a>
 				      </h4>
+				      <hr class="vehicle_card">
 				    </div>
 
-					<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse  {% if forloop.first %}in{% endif %}">
+					<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse in">
 								<div class="col-md-12 ">
 
-									<div class="row well well-sm card_vehicle_versions">
+									<div class="row card_vehicle_versions">
 
 										<div class=" text-center ">
 										<h4>{{ver.version | upper}}</h4>
-										<hr class="vehicle_card">
+										
 										</div>	
 
 										<div class="col-md-4">
@@ -176,14 +180,15 @@
 											
 													<h4 class="py">48 Mensualidades </h4>
 
-													<h1>{{ver.fee48}}</h1>
+													<h1>${{ver.fee48|floatformat:2|intcomma}}</h1>
 													<h4 class="py">Cuota de inscripcion</h4>
-													<button ng-click="$ctrl.guardaCoche(48)" class="btn btn-danger btn-lg btn-block">Agrega al Garage</button></div>
+													<a class ="btn btn-danger btn-lg btn-block" href="">Agrega al Garage</a>
+											</div>
 											<div class="col-md-6">
 													<h4 class="py">60 Mensualidades </h4>
-													<h1>{{ver.fee60}}</h1>
+													<h1>${{ver.fee60|floatformat:2|intcomma}}</h1>
 													<h4 class="py">Cuota de inscripcion</h4>
-													<button ng-click="$ctrl.guardaCoche(48)" class="btn btn-danger btn-lg btn-block">Agrega al Garage</button>
+													<a class ="btn btn-danger btn-lg btn-block" href="">Agrega al Garage</a>
 											</div>
 										</div>
 											
