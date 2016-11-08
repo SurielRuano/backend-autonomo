@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'vehicles',
     'clients',
     'vehicles_finances',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
