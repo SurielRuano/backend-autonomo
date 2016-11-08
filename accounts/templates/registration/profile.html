@@ -9,20 +9,70 @@ r
 	<style type="text/css">
   		section { padding-bottom: 600px; }
 	</style>
+	<link rel="stylesheet" type="text/css" href="{%static 'css/profile/_profile.css'%}">
 {%endblock styles%}
 
 {%block content%}
 	<section>
 		<div class="container">
-			<div class="row">
+			<div class="perfil row">
+
 				<article class="col-sm-12 col-md-4 text-center">
 					<div class="container_userData">
-						<h1>Bienvenido a tu perfil {{request.user.username}}</h1>
+						<h2>Bienvenido a tu perfil {{request.user.username}}</h2>
+						<figure class="containder_userImg">
+							<img src="{%if request.user.client.photo%}{{request.user.client.photo.url}}{%endif%}" alt="Foto de Perfil" class="img-responsive">
+						</figure>
+						<h3>{{request.user.username}}</h3>
+						<hr class="hrPerfil">
+						<strong>{{request.user.email}}</strong>
 					</div>
-					<figure class="container_userImg">
-						<img src="{%if request.user.client.photo%}{{request.user.client.photo.url}}{%endif%}" alt="Foto de Perfil" class="img-responsive">
-					</figure>
 				</article>
+
+				<article class="col-sm-12 col-md-8">
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active">
+							<a href="#garage" aria-controls="garage" role="tab" data-toggle="tab">
+								<i class="fa fa-car">Mi garage</i>
+							</a>
+						</li>
+						<li role="presentation">
+							<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+								<i class="fa fa-user">Datos de Perfil</i>
+							</a>
+						</li>
+						<li role="presentation">
+							<a href="#pagos" aria-controls="pagos" role="tab" data-toggle="tab">
+								<i class="fa fa-dollar">Detalle de Pagos</i>
+							</a>
+						</li>
+					</ul>
+
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane fade in active" id="garage">
+							<div class="panel-group" id="acordion" role="tablist" aria-multiselectable="true">
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="principal">
+										<h4 class="panel-title">
+											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+												Bienvenido
+											</a>
+										</h4>
+									</div>
+								</div>  
+								
+							</div>
+
+						</div>
+						<div role="tabpanel" class="tab-pane" id="profile">
+								Enrique
+						</div>
+						<div role="tabpanel" class="tab-pane" id="pagos">
+								Santamaria
+						</div>
+					</div>
+				</article>
+
 			</div>
 		</div> <!--container-->
 		<form role="form" action="." method="post">

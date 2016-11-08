@@ -24,7 +24,7 @@ class RegistryView (View):
 			client = Client()
 			client.user_client = new_user
 			client.save()
-			return redirect('profile')
+			return redirect('accounts:profile')
 		else:
 			context = {
 			'form':new_user_f,
