@@ -10,6 +10,8 @@
 {%block content%}
 
 
+
+
 <div class="container adjust">
 
 
@@ -19,15 +21,16 @@
 
 
 		<div class="row">
-		  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		 		 <div class="row">
 		 		 	
 		 		 		<div class="col-md-12 text-center">
 
 			 		 		<div class="d-img text-center">
 						    	  <h1 class="py">{{vehicle.name}}</h1>
+						    	  
 						     <img  align="center"  width="400px"  src="/media/{{vehicle.img_front}}" > 
-						  
+						   
 							     
 						    </div>
 		 		 			
@@ -56,57 +59,7 @@
 
 		    
 		  </div>
-		   <div class="col-xs-12 col-sm-12  col-md-4 col-lg-4 container-d-caja-mens">
-		    <div class="d-caja-mens text-center">
-		     
-				<ul class="nav nav-tabs nav-justified" >
-					
-					<li class="py" ng-class = "{active:$ctrl.isSelected(1)}">
-						<a class="pya" href ng-click="$ctrl.selectTab(1)">48 meses</a>
-					</li>
-					<li class="py" ng-class = "{active:$ctrl.isSelected(2)}">
-						<a class="pya" href ng-click="$ctrl.selectTab(2)">60 meses</a>
-					</li>
-
-					
-
-
-				</ul>
-					
-					<div class="panel"  >
-						<!-- <h1 class="py">$6,720.52</h1> -->
-						<h1 class="py"></h1> 
-						<h4 class="py">48 Mensualidades </h4>
-						
-						<hr>
-
-		 			<h1 class="py"></h1> 
-						<!-- <h1 class="py">$2,969.00</h1> -->
-						<h4 class="py">Cuota de inscripcion</h4>
-						
-						<hr>
-						<button ng-click="$ctrl.guardaCoche(48)" class="btn btn-danger btn-lg btn-block">Agrega al Garage</button>
-
-
-					</div>
-					<div class="panel" >
-						<!-- <h1 class="py">$5,376.42</h1> -->
-				   <h1 class="py"></h1>
-						<h4 class="py">60 Mensualidades </h4>
-
-						
-						<hr>
-				   <h1 class="py"></h1> 
-						<!-- <h1 class="py">$2,969.00</h1> -->
-						<h4 class="py">Cuota de inscripcion</h4>
-						
-						<hr>
-						<button ng-click="$ctrl.guardaCoche(60)" class="btn btn-danger btn-lg btn-block btn-AgregarGarage">Agrega al Garage</button>
-					</div>
-					
-			
-		    </div>
-		  </div>
+		   
 
 
 
@@ -115,121 +68,140 @@
 		</div>
 
 		<div class="row">
+
+			<div class="panel-group" id="accordion">
+
 			
 
 			{%for ver in version%}
 			
+				
+				<div class="panel panel-default">
 
-						<div class="col-md-12 ">
+					<div class="panel-heading">
+				      <h4 class="panel-title text-center">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
+				        {{vehicle.name | upper}} VERSION {{ver.version | upper}}</a>
+				      </h4>
+				    </div>
 
-							<div class="row well well-sm card_vehicle_versions">
+					<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse  {% if forloop.first %}in{% endif %}">
+								<div class="col-md-12 ">
 
-								<div class=" text-center ">
-								<h4>{{ver.version | upper}}</h4>
-								<hr class="vehicle_card">
-								</div>	
+									<div class="row well well-sm card_vehicle_versions">
 
-								<div class="col-md-4">
-									
-									 <img  align="center"  class="img-responsive"  src="/media/{{vehicle.img_front}}" > 
-								</div>
-								<div class="col-md-8">
-								<div class="row">
-									<div class="col-md-12">
+										<div class=" text-center ">
+										<h4>{{ver.version | upper}}</h4>
+										<hr class="vehicle_card">
+										</div>	
 
-											<table class="table table-hover">
-											    <thead>
-											      <tr>
-											        <th>Caracteristicas</th>
-											        
-											        
-											      </tr>
-											    </thead>
-											    <tbody>
-											      <tr>
-											        <td>Año</td>
-											        <td>2017</td>
-											        <td>Transmision</td>
-											        <td>
-											        	Manual
-											        </td>
-											        
-											      </tr>
-											      <tr>
-											        <td>Motor</td>
-											        <td>{{ver.engine}} <i>lts.<i>
-											  		</td>
-											  		<td>HP</td>
-											        <td>{{ver.hp}}hp
-											        </td>
-											      </tr>
-											      <tr>
-											      	<td>Cilindros</td>
-											        <td>{{ver.cylinders_num}}
-											        </td>
-											        <td>Direccion</td>
-											        <td>{{ver.hydraulic_power_steering}}
-											        </td>										        
-											      
-											      </tr>
-											      <tr>
-											       <tr>
-											        <td>Bluetooth</td>
-											        <td>{%if ver.bluetooth %}
-											        		<i class="fa fa-check-square-o text-success"></i> 
-											        	{%else%}
-											        		<i class="fa fa-times text-danger"></i> 
-											        	{%endif%}</td>
-											         <td>Vidrios electricos</td>
-											        <td>{%if ver.electric_glasses %}
-											        		<i class="fa fa-check-square-o text-success"></i> 
-											        	{%else%}
-											        		<i class="fa fa-times text-danger"></i> 
-											        	{%endif%}</td>
-								
-											      </tr>
-											        <td>Seguros electricos</td>
-											        <td>{%if ver.electric_door_locks %}
-											        		<i class="fa fa-check-square-o text-success"></i> 
-											        	{%else%}
-											        		<i class="fa fa-times text-danger"></i> 
-											        	{%endif%}</td>
-											        <td>Puertas</td>
-											        <td>{{ver.doors_num}} Puertas</td>
-											 
-											      </tr>
-											    </tbody>
-											  </table>
+										<div class="col-md-4">
+											
+											 <img  align="center"  class="img-responsive"  src="/media/{{vehicle.img_front}}" > 
+										</div>
+										<div class="col-md-8">
+										<div class="row">
+											<div class="col-md-12">
+
+													<table class="table table-hover">
+													    <thead>
+													      <tr>
+													        <th>Caracteristicas</th>
+													        
+													        
+													      </tr>
+													    </thead>
+													    <tbody>
+													      <tr>
+													        <td>Año</td>
+													        <td>2017</td>
+													        <td>Transmision</td>
+													        <td>
+													        	Manual
+													        </td>
+													        
+													      </tr>
+													      <tr>
+													        <td>Motor</td>
+													        <td>{{ver.engine}} <i>lts.<i>
+													  		</td>
+													  		<td>HP</td>
+													        <td>{{ver.hp}}hp
+													        </td>
+													      </tr>
+													      <tr>
+													      	<td>Cilindros</td>
+													        <td>{{ver.cylinders_num}}
+													        </td>
+													        <td>Direccion</td>
+													        <td>{{ver.hydraulic_power_steering}}
+													        </td>										        
+													      
+													      </tr>
+													      <tr>
+													       <tr>
+													        <td>Bluetooth</td>
+													        <td>{%if ver.bluetooth %}
+													        		<i class="fa fa-check-square-o text-success"></i> 
+													        	{%else%}
+													        		<i class="fa fa-times text-danger"></i> 
+													        	{%endif%}</td>
+													         <td>Vidrios electricos</td>
+													        <td>{%if ver.electric_glasses %}
+													        		<i class="fa fa-check-square-o text-success"></i> 
+													        	{%else%}
+													        		<i class="fa fa-times text-danger"></i> 
+													        	{%endif%}</td>
+										
+													      </tr>
+													        <td>Seguros electricos</td>
+													        <td>{%if ver.electric_door_locks %}
+													        		<i class="fa fa-check-square-o text-success"></i> 
+													        	{%else%}
+													        		<i class="fa fa-times text-danger"></i> 
+													        	{%endif%}</td>
+													        <td>Puertas</td>
+													        <td>{{ver.doors_num}} Puertas</td>
+													 
+													      </tr>
+													    </tbody>
+													  </table>
+												
+
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+
+											
+													<h4 class="py">48 Mensualidades </h4>
+
+													<h1>{{ver.fee48}}</h1>
+													<h4 class="py">Cuota de inscripcion</h4>
+													<button ng-click="$ctrl.guardaCoche(48)" class="btn btn-danger btn-lg btn-block">Agrega al Garage</button></div>
+											<div class="col-md-6">
+													<h4 class="py">60 Mensualidades </h4>
+													<h1>{{ver.fee60}}</h1>
+													<h4 class="py">Cuota de inscripcion</h4>
+													<button ng-click="$ctrl.guardaCoche(48)" class="btn btn-danger btn-lg btn-block">Agrega al Garage</button>
+											</div>
+										</div>
+											
+										</div>
+
+
 										
 
+
+
 									</div>
+
+											
+
+										
 								</div>
-								<div class="row">
-									<div class="col-md-6">
-											<h4 class="py">48 Mensualidades </h4>
-											<h4 class="py">Cuota de inscripcion</h4>
-											<button ng-click="$ctrl.guardaCoche(48)" class="btn btn-danger btn-lg btn-block">Agrega al Garage</button></div>
-									<div class="col-md-6">
-											<h4 class="py">48 Mensualidades </h4>
-
-											<h4 class="py">Cuota de inscripcion</h4>
-											<button ng-click="$ctrl.guardaCoche(48)" class="btn btn-danger btn-lg btn-block">Agrega al Garage</button>
-									</div>
-								</div>
-									
-								</div>
-
-
-								
-
-
-
-							</div>
-
-									
-
-								
-						</div>
+				    	</div>
+					</div>
 
 				  {% empty %}
 
@@ -238,6 +210,7 @@
 			 {%endfor%}
 
 		
+			</div> <!-- end panel group -->
 		</div>
 
 	
@@ -246,6 +219,8 @@
 </div>
 
 {%endfor%}
+
+
 
 	{%endblock content%} 
 
@@ -321,3 +296,4 @@
 		 		 </div>
 
  -->
+

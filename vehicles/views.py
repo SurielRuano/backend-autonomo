@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
 from .models import Vehicle, Vehicle_version, trademark
+from vehicles_finances.models import SettingsFinantial
 from django.core import serializers
 
 
@@ -30,8 +31,19 @@ class Detail(View):
 		template_name = 'vehicle_detail/detail.html'
 
 		vehicle = Vehicle.objects.filter(pk=id)
-		version = Vehicle_version.objects.all().filter(vehicle = vehicle)		
+
+
+		version = Vehicle_version.objects.all().filter(vehicle = vehicle)
+
 		
+		
+
+
+	
+
+
+			
+
 		
 		context = {'vehicle':vehicle, 'version':version}
 
