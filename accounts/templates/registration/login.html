@@ -19,6 +19,24 @@
 	{%endif%}
 	<section>
 		<h1>Bienvenido</h1>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<a href="{% url 'social:begin' 'facebook' %}">
+						<button type="button" class="btn btn-primary btn-lg">
+							<i class="fa fa-facebook" aria-hidden="true"></i>Facebook
+						</button>
+					</a>
+				</div>
+				<div class="col-lg-6 col-md-6">
+					<a href="{% url 'social:begin' 'twitter' %}">
+						<button type="button" class="btn btn-info btn-lg">
+							<i class="fa fa-twitter" aria-hidden="true"></i>Twitter
+						</button>
+					</a>
+				</div>
+			</div>
+		</div>
 		<form action="." method="post">
 			{%csrf_token%}
 			{{form.as_p}}

@@ -4,7 +4,7 @@
 {%block title%}
 	Profile
 {%endblock title%}
-
+r 
 {%block styles%}
 	<style type="text/css">
   		section { padding-bottom: 600px; }
@@ -13,6 +13,23 @@
 
 {%block content%}
 	<section>
-		<h1>Bienvenido</h1>
+		<div class="container">
+			<div class="row">
+				<article class="col-sm-12 col-md-4 text-center">
+					<div class="container_userData">
+						<h1>Bienvenido a tu perfil {{request.user.username}}</h1>
+					</div>
+					<figure class="container_userImg">
+						<img src="{%if request.user.client.photo%}{{request.user.client.photo.url}}{%endif%}" alt="Foto de Perfil" class="img-responsive">
+					</figure>
+				</article>
+			</div>
+		</div> <!--container-->
+		<form role="form" action="." method="post">
+			{%csrf_token%}
+			{{userform.as_p}}
+			{{profile.as_p}}
+			<input type="Submit" name="Guardar" placeholder="Guardar Tu Informacion">
+		</form>
 	</section>
 {%endblock content%}
