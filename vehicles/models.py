@@ -70,7 +70,7 @@ class Vehicle_version(models.Model):
 
 	def fee_inscription(self):
 
-		fee_ins = (self.price*0.01)
+		fee_ins = (self.price)*(0.01)
 
 		return fee_ins
 
@@ -79,8 +79,8 @@ class Vehicle_version(models.Model):
 
 	fee48 = property(fee_mounth_48)
 	fee60 = property(fee_mounth_60)
-	fee60 = property(fee_mounth_60)
-	fee_ins = property(fee_mounth_60)
+	
+	fee_ins = property(fee_inscription)
 	
 
 	def __str__(self):
