@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from django.views.generic import View
 from .models import Vehicle, Vehicle_version, trademark
 from vehicles_finances.models import SettingsFinantial
+from clients.models import Client, Garage
 from django.core import serializers
 
 
@@ -39,3 +40,27 @@ class Detail(View):
 
 
 		return render(request, template_name, context)
+
+
+
+class AddToGarage(View):
+
+	
+
+	def get(self,request,id_version):
+
+
+
+		version = Vehicle_version.objects.get(pk=id_version)
+
+		client = Client.objects.get(id = request.user.id)
+
+		g = Garage.objects.create(user_garage=client,user_vehicle=version)
+
+		g.save()
+
+		return redirect('accounts:profile')
+
+
+
+

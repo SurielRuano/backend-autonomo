@@ -33,8 +33,8 @@ class VehicleBooking (models.Model):
 		verbose_name = "VehicleBooking"
 		verbose_name_plural = "VehicleBookings"
 
-	def __str__(self):
-		return self.id_client
+	# def __str__(self):
+	# 	return self.id_client
 
 class DetailPayment (models.Model):
 	id_vehiclebooking = models.ForeignKey(VehicleBooking, related_name='detailpayment')
@@ -49,8 +49,8 @@ class DetailPayment (models.Model):
 		verbose_name = "DetailPayment"
 		verbose_name_plural = "DetailPayments"
 
-	def __str__(self):
-		return self.id_vehiclebooking
+	# def __str__(self):
+	# 	return self.id_vehiclebooking
 
 
 class SettingsFinantial(models.Model):
@@ -62,8 +62,8 @@ class SettingsFinantial(models.Model):
 		verbose_name = "SettingsFinantial"
 		verbose_name_plural = "SettingsFinantials"
 
-		def __str__(self):
-			return (self.update_factor, self.administration_fee)
+		# def __str__(self):
+		# 	return (self.update_factor, self.administration_fee)
 
 
 # class MonthlyPayment(models.Model):

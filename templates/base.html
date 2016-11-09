@@ -33,13 +33,15 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <div class="padd">
 		      <ul class="nav navbar-nav navbar-right" align="center">
-		        <li>
+
+		       <li>
 		          <a href="javascript:void(0)">
 		            <button type="button" class="btn btn-circle" data-toggle="modal" data-target="#myModal">
 		              ¿Cómo Funciona?
-		            </button>
+		            </button>		           
 		          </a>
 		        </li>
+
 		        <li>
 		          <a href="/catalogo">
 		            <button type="button" class="btn btn-circle">
@@ -47,24 +49,42 @@
 		            </button>
 		          </a>
 		        </li>
-		        <li>
-		          <a class="pointer">
+		        
+		        
+
+		       
+		        
+
+		        {%if request.user.is_authenticated%}
+
+		          <li class="textnavv">
+		          
+		          <span  class="pointer">
+		            <a href="/accounts/profile">
+		              <img style="width: 40px; border-radius:90%;">
+		            </a>
+		            <a  href="/accounts/logout" class="btn btn-circle">
+		              Cerrar Sesión
+		            </a>
+		          </span>
+		        </li>
+
+			       
+			     {%else%}
+
+			     <li>
+		          <a href="/accounts/login" class="pointer">
 		            <button type="button" class="btn btn-circle">
 		              Iniciar Sesión
 		            </button>
 		          </a>
 		        </li>
-		        <li class="textnavv">
-		          
-		          <span  class="pointer">
-		            <a href="#/perfil">
-		              <img style="width: 40px; border-radius:90%;">
-		            </a>
-		            <a class="btn btn-circle">
-		              Cerrar Sesión
-		            </a>
-		          </span>
-		        </li>
+
+			      {%endif%}
+
+
+
+		      
 		      </ul>
 		      </div>
 		    </div><!-- /.navbar-collapse -->
