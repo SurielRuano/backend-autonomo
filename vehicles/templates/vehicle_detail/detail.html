@@ -71,6 +71,8 @@
 		<div class="row">
 
 			<h3 class="text-center">Versiones</h3>
+			<br>
+			<br>
 
 			<div class="panel-group" id="accordion">
 
@@ -84,9 +86,9 @@
 					<div class="panel-heading">
 				      <h4 class="panel-title text-center">
 				        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
-				        {{vehicle.name | upper}} - {{ver.version | upper}}</a>
+				        <strong>{{vehicle.name | upper}} - {{ver.version | upper}}</strong></a>
 				      </h4>
-				      <hr class="vehicle_card">
+				     
 				    </div>
 
 					<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse in">
@@ -95,13 +97,13 @@
 									<div class="row card_vehicle_versions">
 
 										<div class=" text-center ">
-										<h4>{{ver.version | upper}}</h4>
+										
 										
 										</div>	
 
 										<div class="col-md-4">
 											
-											 <img  align="center"  class="img-responsive"  src="/media/{{vehicle.img_front}}" > 
+											 <img  align="center"  class="img-responsive"  src="/media/{{ver.img_front}}" > 
 										</div>
 										<div class="col-md-8">
 										<div class="row">
@@ -178,17 +180,42 @@
 											<div class="col-md-6">
 
 											
-													<h4 class="py">48 Mensualidades </h4>
+													<h4 class="py text-info">48 Mensualidades </h4>
 
-													<h1>${{ver.fee48|floatformat:2|intcomma}}</h1>
-													<h4 class="py">Cuota de inscripcion</h4>
-													<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
+													<h2 class="text-center">${{ver.fee48|floatformat:2|intcomma}}</h2>
+													<h4 class="py text-success">Cuota de inscripcion</h4>
+													<h2 class="text-center">${{ver.fee_ins|floatformat:2|intcomma}}</h2>
+
+													
+													{%if request.user.is_authenticated%}
+														<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
+
+													{%else%}
+
+														<a class ="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Agrega al Garage</a>
+
+													{%endif%}
 											</div>
 											<div class="col-md-6">
-													<h4 class="py">60 Mensualidades </h4>
-													<h1>${{ver.fee60|floatformat:2|intcomma}}</h1>
-													<h4 class="py">Cuota de inscripcion</h4>
-													<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
+													<h4 class="py text-info">60 Mensualidades </h4>
+													<h2 class="text-center">${{ver.fee60|floatformat:2|intcomma}}</h2>
+													<h4 class="py text-success">Cuota de inscripcion</h4>
+													<h2 class="text-center">${{ver.fee_ins|floatformat:2|intcomma}}</h2>
+
+
+													
+														
+													{%if request.user.is_authenticated%}
+															<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
+
+													{%else%}
+
+															<a class ="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Agrega al Garage</a>
+																
+
+													{%endif%}
+
+
 											</div>
 										</div>
 											
@@ -224,6 +251,28 @@
 </div>
 
 {%endfor%}
+
+
+<!-- Modal -->
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Registrate o inicia Sesion </h4>
+		      </div>
+		      <div class="modal-body">
+		        <!-- 16:9 aspect ratio -->
+		        <div class="embed-responsive embed-responsive-16by9">
+		          <p>Debes iniciar sesion o registrarte para poder agregar automoviles a tu garage</p>
+		        </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 
 

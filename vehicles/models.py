@@ -36,6 +36,7 @@ class Vehicle(models.Model):
 class Vehicle_version(models.Model):
 	vehicle = models.ForeignKey(Vehicle, related_name='version')	
 	version = models.CharField(max_length=60)
+	img_front = models.ImageField(upload_to="assets/vehicles/version", blank=True, null=True)	
 	airbag = models.BooleanField(default=False)
 	sunroof = models.BooleanField(default=False)
 	bluetooth = models.BooleanField(default=False)
@@ -67,11 +68,19 @@ class Vehicle_version(models.Model):
 
 		return fee_60
 
+	def fee_inscription(self):
+
+		fee_ins = (self.price*0.01)
+
+		return fee_ins
+
 
 
 
 	fee48 = property(fee_mounth_48)
 	fee60 = property(fee_mounth_60)
+	fee60 = property(fee_mounth_60)
+	fee_ins = property(fee_mounth_60)
 	
 
 	def __str__(self):
