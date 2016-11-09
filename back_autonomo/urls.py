@@ -25,7 +25,7 @@ from django.views.static import serve
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(accUrls, namespace="accounts")),
-    url(r'^catalogo/', include(vehicles)),   
+    url(r'^catalogo/', include(vehicles, namespace="catalogo")),   
     url(r'^', include(urlsMain)),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(
