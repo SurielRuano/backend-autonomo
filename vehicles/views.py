@@ -3,6 +3,7 @@ from django.views.generic import View
 from .models import Vehicle, Vehicle_version, trademark
 from vehicles_finances.models import SettingsFinantial
 from clients.models import Client, Garage
+from django.contrib.auth.models import User
 from django.core import serializers
 
 
@@ -52,8 +53,8 @@ class AddToGarage(View):
 
 
 		version = Vehicle_version.objects.get(pk=id_version)
-
-		client = Client.objects.get(id = request.user.id)
+		current_user = request.user
+		client = Client.objects.get(user_client = current_user.id)
 
 		g = Garage.objects.create(user_garage=client,user_vehicle=version)
 

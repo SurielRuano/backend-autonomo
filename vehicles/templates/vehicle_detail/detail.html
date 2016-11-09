@@ -182,13 +182,35 @@
 
 													<h1>${{ver.fee48|floatformat:2|intcomma}}</h1>
 													<h4 class="py">Cuota de inscripcion</h4>
-													<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
+													
+													{%if request.user.is_authenticated%}
+														<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
+
+													{%else%}
+
+														<a class ="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Agrega al Garage</a>
+
+													{%endif%}
 											</div>
 											<div class="col-md-6">
 													<h4 class="py">60 Mensualidades </h4>
 													<h1>${{ver.fee60|floatformat:2|intcomma}}</h1>
 													<h4 class="py">Cuota de inscripcion</h4>
-													<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
+
+
+													
+														
+													{%if request.user.is_authenticated%}
+															<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
+
+													{%else%}
+
+															<a class ="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Agrega al Garage</a>
+																
+
+													{%endif%}
+
+
 											</div>
 										</div>
 											
@@ -224,6 +246,28 @@
 </div>
 
 {%endfor%}
+
+
+<!-- Modal -->
+		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Registrate o inicia Sesion </h4>
+		      </div>
+		      <div class="modal-body">
+		        <!-- 16:9 aspect ratio -->
+		        <div class="embed-responsive embed-responsive-16by9">
+		          <p>Debes iniciar sesion o registrarte para poder agregar automoviles a tu garage</p>
+		        </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 
 
