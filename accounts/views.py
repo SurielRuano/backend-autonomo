@@ -37,13 +37,12 @@ class ProfileView(View):
 		template_name= "registration/profile.html"
 		userform = UserEditForm(instance=request.user)
 		profile = ProfileEditForm(instance=request.user.client)
-		client = Client.objects.all().filter(user_client=request.user)
-		# garage = Garage.objects.all()
-		# user_cars = garage.filter(user_garage=request.user.)
+		client = Client.objects.get(id=request.user.id)
+		garage = Garage.objects.all().filter(user_garage=client)
 		context = {
 		'userform':userform,
 		'profile':profile,
-		'client':client,
+		'garage': garage,
 		}
 		return render(request, template_name, context)
 

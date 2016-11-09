@@ -15,7 +15,10 @@ r
 {%block content%}
 	<section>
 
-		{{client.address}}
+		{%for ga in garage%}
+			{{ga.user_vehicle.description_long}}
+			{{ga.user_vehicle.vehicle.name}}
+		{%endfor%}
 		<div class="container">
 			<div class="perfil row">
 
