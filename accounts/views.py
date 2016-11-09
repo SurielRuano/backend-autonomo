@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.views.generic import View
 from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 from django.contrib.auth.models import User
-from clients.models import Client
-
+from clients.models import Client, Garage
+from vehicles.models import Vehicle_version
 # Create your views here.
 class RegistryView (View):
 	def get(self, request):
@@ -37,9 +37,12 @@ class ProfileView(View):
 		template_name= "registration/profile.html"
 		userform = UserEditForm(instance=request.user)
 		profile = ProfileEditForm(instance=request.user.client)
+		client = Client.objects.get(id=request.user.id)
+		garage = Garage.objects.all().filter(user_garage=client)
 		context = {
 		'userform':userform,
 		'profile':profile,
+		'garage': garage,
 		}
 		return render(request, template_name, context)
 
