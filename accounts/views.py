@@ -35,15 +35,15 @@ class RegistryView (View):
 class ProfileView(View):
 	def get(self, request):
 		template_name= "registration/profile.html"
+		#mth_vehicle = Vehicle_version()
 		userform = UserEditForm(instance=request.user)
 		profile = ProfileEditForm(instance=request.user.client)
 		client = Client.objects.get(id=request.user.id)
 		garage = Garage.objects.all().filter(user_garage=client)
+		# monthly = mth_vehicle.
 		context = {
 		'userform':userform,
 		'profile':profile,
 		'garage': garage,
 		}
 		return render(request, template_name, context)
-
-		
