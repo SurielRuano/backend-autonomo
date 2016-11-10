@@ -1,6 +1,6 @@
 {%extends 'base.html'%}
 {%load static%}
-
+{%load humanize%}
 {%block title%}
 	Profile
 {%endblock title%}
@@ -14,11 +14,6 @@ r
 
 {%block content%}
 	<section>
-
-		{%for ga in garage%}
-			{{ga.user_vehicle.description_long}}
-			{{ga.user_vehicle.vehicle.name}}
-		{%endfor%}
 		<div class="container">
 			<div class="perfil row">
 
@@ -55,10 +50,11 @@ r
 
 					<div class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active" id="garage">
+							{%for ga in garage%}
 							<div class="panel-group" id="acordion" role="tablist" aria-multiselectable="true">
 									
 								<div class="panel panel-default">
-									{%for ga in garage%}
+									
 									<div class="panel-heading" role="tab" id="headingOne">
 										<h4 class="panel-title">
 											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -72,8 +68,16 @@ r
 											<div class="col-sm-12 col-md-6">
 												<ul class="list-group">
 	                                                <li class="list-group-item"><strong>{{ga.user_vehicle.vehicle.trademark.name}}</strong></li>
-	                                                <li class="list-group-item">120</li>
-	                                                <li class="list-group-item"><a href="#">Más info</a></li>
+	                                                <li class="list-group-item">{{ga.user_vehicle.version}}</li>
+	                                                <li class="list-group-item">
+	                                                	<a href="#">
+															{%if ga.monthly_payment == 40%}
+																Primer mes de {{ga.user_vehicle.fee_mounth_48|floatformat:2|intcomma}}
+															{%else%}
+																Primer mes de {{ga.user_vehicle.fee_mounth_60|floatformat:2|intcomma}}
+															{%endif%}
+	                                                	</a>
+	                                                </li>
                                             	</ul>
 											</div>
 											<figure class="col-sm-12 col-md-6">
@@ -84,10 +88,9 @@ r
                                         	</div>
 										</div>
 									</div>
-
 								</div>
-
 							</div>
+							{%endfor%}
 						</div>
 						<div role="tabpanel" class="tab-pane" id="profile">
 							<h5>Mi perfil</h5>

@@ -35,9 +35,9 @@ class Client(models.Model):
 class Garage(models.Model):
 	user_garage = models.ForeignKey(Client, related_name='garage')
 	user_vehicle = models.ForeignKey(Vehicle_version, related_name='garage')
-	monthly_payment = models.IntegerField()
-	status  = models.BooleanField()
-	add_date = models.DateField()
+	monthly_payment = models.IntegerField(blank=True, null=True)
+	status  = models.BooleanField(default=False)
+	add_date = models.DateField(auto_now=True)
 
 	class Meta:
 		verbose_name = "Garage"
