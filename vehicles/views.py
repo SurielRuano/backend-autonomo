@@ -5,6 +5,7 @@ from vehicles_finances.models import SettingsFinantial
 from clients.models import Client, Garage
 from django.contrib.auth.models import User
 from django.core import serializers
+from django.contrib.auth.forms import AuthenticationForm
 
 
 
@@ -37,7 +38,8 @@ class Detail(View):
 
 		version = Vehicle_version.objects.all().filter(vehicle = vehicle)
 
-		context = {'vehicle':vehicle, 'version':version}
+		context = {'vehicle':vehicle, 'version':version,'form_login':AuthenticationForm()}
+
 
 
 		return render(request, template_name, context)
