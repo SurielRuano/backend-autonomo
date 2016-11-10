@@ -56,12 +56,13 @@ r
 					<div class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active" id="garage">
 							<div class="panel-group" id="acordion" role="tablist" aria-multiselectable="true">
-								
+									
 								<div class="panel panel-default">
+									{%for ga in garage%}
 									<div class="panel-heading" role="tab" id="headingOne">
 										<h4 class="panel-title">
 											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-												<strong>Beatle</strong>
+												<strong>{{ga.user_vehicle.vehicle.name}}</strong>
 											</a>
 										</h4>
 									</div>
@@ -70,7 +71,7 @@ r
 										<div class="panel-body">
 											<div class="col-sm-12 col-md-6">
 												<ul class="list-group">
-	                                                <li class="list-group-item"><strong>wolkswaguen</strong></li>
+	                                                <li class="list-group-item"><strong>{{ga.user_vehicle.vehicle.trademark.name}}</strong></li>
 	                                                <li class="list-group-item">120</li>
 	                                                <li class="list-group-item"><a href="#">Más info</a></li>
                                             	</ul>
@@ -83,6 +84,7 @@ r
                                         	</div>
 										</div>
 									</div>
+
 								</div>
 
 							</div>
