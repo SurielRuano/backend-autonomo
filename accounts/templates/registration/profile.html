@@ -50,20 +50,19 @@ r
 
 					<div class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active" id="garage">
-							{%for ga in garage%}
-							<div class="panel-group" id="acordion" role="tablist" aria-multiselectable="true">
-									
+							<div class="panel-group" id="acordion" role="tablist" aria-multiselectable="true">	
 								<div class="panel panel-default">
+								{%for ga in garage%}
 									
-									<div class="panel-heading" role="tab" id="headingOne">
+									<div class="panel-heading" role="tab" id="headingOne{{forloop.counter}}">
 										<h4 class="panel-title">
-											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne{{forloop.counter}}" aria-expanded="true" aria-controls="collapseOne{{forloop.counter}}">
 												<strong>{{ga.user_vehicle.vehicle.name}}</strong>
 											</a>
 										</h4>
 									</div>
 
-									<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+									<div id="collapseOne{{forloop.counter}}" class="panel-collapse collapse {%if forloop.first%}in{%endif%}" role="tabpanel" aria-labelledby="headingOne{{forloop.counter}}">
 										<div class="panel-body">
 											<div class="col-sm-12 col-md-6">
 												<ul class="list-group">
@@ -88,9 +87,9 @@ r
                                         	</div>
 										</div>
 									</div>
+									{%endfor%}
 								</div>
 							</div>
-							{%endfor%}
 						</div>
 						<div role="tabpanel" class="tab-pane" id="profile">
 							<h5>Mi perfil</h5>
