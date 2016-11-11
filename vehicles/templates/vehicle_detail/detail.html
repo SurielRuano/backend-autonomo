@@ -11,103 +11,247 @@
 {%block content%}
 
 
+<!--  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+ Indicators
+ <ol class="carousel-indicators">
+   <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+   <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+   <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+ </ol>
+
+ Wrapper for slides
+ <div class="carousel-inner" role="listbox">
+   <div class="item active">
+     <img src="http://localhost:8000/media/assets/vehicles/tsuru_XzImJxe.jpg" alt="...">
+     <div class="carousel-caption">
+       wrrwerwe
+     </div>
+   </div>
+   <div class="item">
+     <img src="http://localhost:8000/media/assets/vehicles/tsuru_XzImJxe.jpg" alt="...">
+     <div class="carousel-caption">
+       vnvnvn
+     </div>
+   </div>
+   
+ </div>
+
+ Controls
+ <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+   <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+   <span class="sr-only">Anterior</span>
+ </a>
+ <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+   <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+   <span class="sr-only">Siguiente</span>
+ </a>
+</div>
+ -->
 
 
 <div class="container adjust">
 
 
 
-				{%for vehicle in vehicle%}
+
 
 
 
 		<div class="row">
-		  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		 		 <div class="row">
-		 		 	
-		 		 		<div class="col-md-12 text-center">
-
-			 		 		<div class="d-img text-center">
-						    	  <h1 class="py">{{vehicle.name}}</h1>
-						    	  
-						     <img  align="center"  width="400px"  src="/media/{{vehicle.img_front}}" > 
-						   
-							     
-						    </div>
-		 		 			
-		 		 			
-		 		 		</div>
-
-		 		 </div>
-
-		 		  <div class="row">
-		 		 	
-		 		 		<div class="col-md-3 text-center">
-		 		 			<img width="60px" src="/media/{{vehicle.trademark.logo}}">
-		 		 			
-		 		 		</div>
-
-		 		 		<div class="col-md-9">
-		 		 			
-		 		 			<p>{{vehicle.description_short}}</p>
-		 		 			
-		 		 		</div>
-
-		 		 </div>
-
-
-
-
-		    
-		  </div>
-		   
-
-
-
-
-
-		</div>
+	  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	 		<div class="row">
+	 			
+	 				<div class="col-md-12 text-center">
+	 		
+	 					 		 		<div class="d-img text-center">
+	 								    	  <h1 class="py">{{vehicle.name}}</h1>
+	 								    	  
+	 								     <img  align="center"    src="/media/{{vehicle.img_front}}" > 
+	 								   
+	 									     
+	 								    </div>
+	 					
+	 					
+	 				</div>
+	 		
+	 		</div> 
 	
+	 		  <div class="row">
+	 		  <br>
+	 		  <br>
+	 		 	
+	 		 		<div class="col-md-3 text-center">
+	 		 			<img width="60px" src="/media/{{vehicle.trademark.logo}}">
+	 		 			
+	 		 		</div>
+	
+	 		 		<div class="col-md-9">
+	 		 			
+	 		 			<p>{{vehicle.description_short}}</p>
+	 		 			
+	 		 		</div>
+	
+	 		 </div>
+	
+	
+	
+	
+	    
+	  </div>
+	   
+	
+	
+	
+	
+	
+	</div>
+		 
 		<div class="row">
 
 			<h3 class="text-center">Versiones</h3>
 			<br>
 			<br>
 
-			<div class="panel-group" id="accordion">
-
+		
 			
 
 			{%for ver in version%}
-			
-				
-				<div class="panel panel-default">
 
-					<div class="panel-heading">
-				      <h4 class="panel-title text-center">
+
+				<div class="col-md-6">
+
+
+				<div class="row">
+					
+					<div class="col-md-12">
+
+
+					  <h4 class="panel-title text-center">
 				        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">
 				        <strong>{{vehicle.name | upper}} - {{ver.version | upper}}</strong></a>
 				      </h4>
-				     
-				    </div>
+						<br>
+								    			<br>
 
-					<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse in">
-								<div class="col-md-12 ">
+					</div>
 
-									<div class="row card_vehicle_versions">
+					<div class="col-md-12 text-center">
+						
+						 <img  align="center" height="200px"  src="/media/{{ver.img_front}}" > 
+					</div>
 
-										<div class=" text-center ">
-										
-										
-										</div>	
 
-										<div class="col-md-4">
+
+					<div class="col-md-12 ">								
+
+			&nbsp;<br>
+									<!-- Nav tabs -->
+								  <ul class="nav nav-tabs" role="tablist">
+								    <li role="presentation" class="active"><a href="#48mounth{{forloop.counter}}" aria-controls="48mounth{{forloop.counter}}" role="tab" data-toggle="tab">48 Meses</a></li>
+								    <li role="presentation"><a href="#60mounth{{forloop.counter}}" aria-controls="60mounth{{forloop.counter}}" role="tab" data-toggle="tab">60 Meses</a></li>
+								   
+								  </ul>
+
+								  <!-- Tab panes -->
+								  <div class="tab-content">
+								    <div role="tabpanel" class="tab-pane active" id="48mounth{{forloop.counter}}">
+								    	
+								    	<div class="row">
+								    	<br>
+								    			<br>
+								    					
+								    		
+								    		<div class="col-md-10 col-md-offset-1 text-center">
+
+
+
+								    				<div class="row">
+								    					
+								    						<div class="col-md-6">
+
+								    							<h4 class="py text-info">60 Mensualidades </h4>
+																<h2 class="text-center">${{ver.fee48|floatformat:2|intcomma}}</h2>
+								    							
+
+								    						</div>
+
+								    						<div class="col-md-6">
+								    							<h4 class="py text-success">Cuota de inscripcion</h4>
+																<h2 class="text-center">${{ver.fee_ins|floatformat:2|intcomma}}</h2>					    							
+								    						</div>
+								    				</div>
 											
-											 <img  align="center"  class="img-responsive"  src="/media/{{ver.img_front}}" > 
-										</div>
-										<div class="col-md-8">
+											<br>
+								    			<br>
+													
+													
+													{%if request.user.is_authenticated%}
+														<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
+
+													{%else%}
+
+														<a class ="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Agrega al Garage</a>
+
+													{%endif%}
+											</div>
+								    	</div>
+								    </div>
+								    <div role="tabpanel" class="tab-pane" id="60mounth{{forloop.counter}}">
+								    	
+								    		<div class="row">
+								    			<br>
+								    			<br>
+								    			<div class="col-md-10 col-md-offset-1 text-center">
+
+								    					<div class="row">
+								    						
+								    						<div class="col-md-6">
+
+								    							<h4 class="py text-info">60 Mensualidades </h4>
+																<h2 class="text-center">${{ver.fee60|floatformat:2|intcomma}}</h2>
+								    							
+
+								    						</div>
+
+								    						<div class="col-md-6">
+								    							<h4 class="py text-success">Cuota de inscripcion</h4>
+																<h2 class="text-center">${{ver.fee_ins|floatformat:2|intcomma}}</h2>					    							
+								    						</div>
+								    					</div>
+														
+														<br>
+								    			<br>
+
+														
+															
+														{%if request.user.is_authenticated%}
+																<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
+
+														{%else%}
+
+																<a class ="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Agrega al Garage</a>
+																	
+
+														{%endif%}
+
+
+												</div>
+								    		</div>
+								    </div>
+								   
+								  </div>
+
+
+
+								  <div class="row card_vehicle_versions">
+
+										
+
+										
+										<div class="col-md-12">
 										<div class="row">
 											<div class="col-md-12">
+												&nbsp;<br>
 
 													<table class="table table-hover">
 													    <thead>
@@ -176,48 +320,7 @@
 
 											</div>
 										</div>
-										<div class="row">
-											<div class="col-md-6">
-
-											
-													<h4 class="py text-info">48 Mensualidades </h4>
-
-													<h2 class="text-center">${{ver.fee48|floatformat:2|intcomma}}</h2>
-													<h4 class="py text-success">Cuota de inscripcion</h4>
-													<h2 class="text-center">${{ver.fee_ins|floatformat:2|intcomma}}</h2>
-
-													
-													{%if request.user.is_authenticated%}
-														<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
-
-													{%else%}
-
-														<a class ="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Agrega al Garage</a>
-
-													{%endif%}
-											</div>
-											<div class="col-md-6">
-													<h4 class="py text-info">60 Mensualidades </h4>
-													<h2 class="text-center">${{ver.fee60|floatformat:2|intcomma}}</h2>
-													<h4 class="py text-success">Cuota de inscripcion</h4>
-													<h2 class="text-center">${{ver.fee_ins|floatformat:2|intcomma}}</h2>
-
-
-													
-														
-													{%if request.user.is_authenticated%}
-															<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' ver.pk %}">Agrega al Garage</a>
-
-													{%else%}
-
-															<a class ="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Agrega al Garage</a>
-																
-
-													{%endif%}
-
-
-											</div>
-										</div>
+										
 											
 										</div>
 
@@ -231,9 +334,20 @@
 											
 
 										
-								</div>
-				    	</div>
-					</div>
+						</div>
+
+					&nbsp;<br>
+					<br>
+
+
+				</div>
+					
+
+
+				</div>
+			
+				
+				
 
 				  {% empty %}
 
@@ -242,7 +356,7 @@
 			 {%endfor%}
 
 		
-			</div> <!-- end panel group -->
+			
 		</div>
 
 	
@@ -250,7 +364,7 @@
 
 </div>
 
-{%endfor%}
+
 
 
 <!-- Modal -->
@@ -313,7 +427,7 @@
 							
 						</div>	
 
-						
+
 			</div>
 		      </div>
 		      <div class="modal-footer">
