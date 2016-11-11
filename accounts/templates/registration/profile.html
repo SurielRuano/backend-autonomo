@@ -19,11 +19,11 @@ r
 
 				<article class="col-sm-12 col-md-4 text-center">
 					<div class="container_userData">
-						<h2>Bienvenido a tu perfil {{request.user.username}}</h2>
+						<h2>Bienvenido a tu perfil {{request.user.username|upper}}</h2>
 						<figure class="containder_userImg">
-							<img class="img-responsive" src="{%if request.user.client.photo%}{{request.user.client.photo.url}}{%endif%}" alt="Foto de Perfil" >
+							<img class="img-responsive img-circle"  src="{%if request.user.client.photo%}{{request.user.client.photo.url}}{%endif%}" alt="Foto de Perfil" >
 						</figure>
-						<h3>{{request.user.username}}</h3>
+						<h3>{{request.user.username|upper}}</h3>
 						<hr class="hrPerfil">
 						<strong>{{request.user.email}}</strong>
 					</div>
@@ -62,31 +62,47 @@ r
 										</h4>
 									</div>
 
-									<div id="collapseOne{{forloop.counter}}" class="panel-collapse collapse {%if forloop.first%}in{%endif%}" role="tabpanel" aria-labelledby="headingOne{{forloop.counter}}">
+									<div id="collapseOne{{forloop.counter}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne{{forloop.counter}}">
 										<div class="panel-body">
 											<div class="col-sm-12 col-md-6">
 												<ul class="list-group">
 	                                                <li class="list-group-item"><strong>{{ga.user_vehicle.vehicle.trademark.name}}</strong></li>
 	                                                <li class="list-group-item">{{ga.user_vehicle.version}}</li>
 	                                                <li class="list-group-item">
-	                                                	<a href="#">
-															{%if ga.monthly_payment == 40%}
-																Primer mes de {{ga.user_vehicle.fee_mounth_48|floatformat:2|intcomma}}
-															{%else%}
-																Primer mes de {{ga.user_vehicle.fee_mounth_60|floatformat:2|intcomma}}
-															{%endif%}
-	                                                	</a>
+														{%if ga.monthly_payment == 40%}
+															Primer mes de {{ga.user_vehicle.fee_mounth_48|floatformat:2|intcomma}}
+														{%else%}
+															Primer mes de {{ga.user_vehicle.fee_mounth_60|floatformat:2|intcomma}}
+														{%endif%}
+	                                                </li>
+	                                                <li class="list-group-item">
+														Inscripción {{ga.user_vehicle.fee_inscription|floatformat:2|intcomma}}
 	                                                </li>
                                             	</ul>
+                                            	<div class="col-sm-offset-6 col-md-offset-4">
+                                            		<img src="{{ga.user_vehicle.vehicle.trademark.logo.url}}" style="width: 20%" alt="" class="img-responsive img-circle">
+                                            	</div>
 											</div>
 											<figure class="col-sm-12 col-md-6">
 												<img class="img-responsive" src="http://pngimg.com/upload/volkswagen_PNG1794.png" alt="Volkswagen"> 
 											</figure>
 											<div class="col-md-12 text-center">
-                                            	<a class="btn btn-danger" href="#">Empieza a financiarlo</a>
+                                            	{%if ga.status%}
+                                            		<a class="btn btn-success" href="#" disabled="disabled">
+                                            			Este auto esta en Financiamiento
+                                            		</a>
+                                            	{%else%}
+                                            		<a class="btn btn-primary" href="#">
+                                            			Empieza a Financiarlo
+                                            		</a>
+                                            	{%endif%}
                                         	</div>
 										</div>
 									</div>
+									
+									{%empty%}
+									<h2>Aun no agregas ningun Auto a tu garage</h2>
+									<h5><a href="{% url 'catalogo:catalog'%}">Busca el mejor auto para ti aquí...</a></h5>
 									{%endfor%}
 								</div>
 							</div>

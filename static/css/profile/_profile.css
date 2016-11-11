@@ -1,6 +1,6 @@
-.container_userData{
+/*.container_userData{
   margin: 15% 0%;
-}
+}*/
 .container_userData strong{
   display: block;
   text-align: center;
@@ -26,7 +26,7 @@
 .sub-menu-perfil li{
 
   display: inline-block;
-}
+} 
 hr.hrPerfil{
 
   width: 100px;
