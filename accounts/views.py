@@ -4,6 +4,8 @@ from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 from django.contrib.auth.models import User
 from clients.models import Client, Garage
 from vehicles.models import Vehicle_version
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 class RegistryView (View):
 	def get(self, request):
@@ -24,7 +26,7 @@ class RegistryView (View):
 			client = Client()
 			client.user_client = new_user
 			client.save()
-			return redirect('accounts:profile')
+			return redirect('accounts:login')
 		else:
 			context = {
 			'form':new_user_f,
@@ -33,14 +35,13 @@ class RegistryView (View):
 
 
 class ProfileView(View):
+	@method_decorator(login_required)
 	def get(self, request):
 		template_name= "registration/profile.html"
-		#mth_vehicle = Vehicle_version()
 		userform = UserEditForm(instance=request.user)
 		profile = ProfileEditForm(instance=request.user.client)
 		client = Client.objects.get(id=request.user.id)
 		garage = Garage.objects.all().filter(user_garage=client)
-		# monthly = mth_vehicle.
 		context = {
 		'userform':userform,
 		'profile':profile,

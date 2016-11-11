@@ -87,6 +87,9 @@ r
                                         	</div>
 										</div>
 									</div>
+									{%empty%}
+									<h2>Aun no adquieres ningun Auto</h2>
+									<h5><a href="{% url 'catalogo:catalog'%}">Adquierelo aquí</a></h5>
 									{%endfor%}
 								</div>
 							</div>
