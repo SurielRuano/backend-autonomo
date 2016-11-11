@@ -69,7 +69,7 @@ r
 	                                                <li class="list-group-item"><strong>{{ga.user_vehicle.vehicle.trademark.name}}</strong></li>
 	                                                <li class="list-group-item">{{ga.user_vehicle.version}}</li>
 	                                                <li class="list-group-item">
-														{%if ga.monthly_payment == 40%}
+														{%if ga.monthly_payment == 48%}
 															Primer mes de {{ga.user_vehicle.fee_mounth_48|floatformat:2|intcomma}}
 														{%else%}
 															Primer mes de {{ga.user_vehicle.fee_mounth_60|floatformat:2|intcomma}}
@@ -84,7 +84,7 @@ r
                                             	</div>
 											</div>
 											<figure class="col-sm-12 col-md-6">
-												<img class="img-responsive" src="http://pngimg.com/upload/volkswagen_PNG1794.png" alt="Volkswagen"> 
+												<img class="img-responsive" src="{{ga.user_vehicle.img_front.url}}" alt="Volkswagen"> 
 											</figure>
 											<div class="col-md-12 text-center">
                                             	{%if ga.status%}
@@ -116,10 +116,12 @@ r
 		                    </div>
 		                    <div class="col-md-12">
 		                    	<form role="form" action="." method="post">
-									{%csrf_token%}
-									{{userform.as_p}}
-									{{profile.as_p}}
-									<input type="Submit" name="Guardar" placeholder="Guardar Tu Informacion">
+		                    		<div class="form-group">
+										{%csrf_token%}
+										{{userform.as_p}}
+										{{profile.as_p}}
+										<input class="btn btn-primary" type="Submit" name="Guardar" placeholder="Guardar Tu Informacion">
+		                    		</div>
 								</form>
 		                    </div>
 						</div>
