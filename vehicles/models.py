@@ -21,7 +21,7 @@ class Vehicle(models.Model):
 	name = models.CharField(max_length=60)
 	anio = models.DateField(auto_now=True)	
 	description_short = models.TextField()	
-	img_front = models.ImageField(upload_to="assets/vehicles", blank=True, null=True)
+	img_front = models.ImageField(upload_to="assets/vehicles")
 	img_left = models.ImageField(upload_to="assets/vehicles", blank=True, null=True)
 	img_right = models.ImageField(upload_to= "assets/vehicles", blank=True, null=True)
 	img_back = models.ImageField(upload_to= "assets/vehicles", blank=True, null=True)
@@ -36,7 +36,7 @@ class Vehicle(models.Model):
 class Vehicle_version(models.Model):
 	vehicle = models.ForeignKey(Vehicle, related_name='version')	
 	version = models.CharField(max_length=60)
-	img_front = models.ImageField(upload_to="assets/vehicles/version", blank=True, null=True)	
+	img_front = models.ImageField(upload_to="assets/vehicles/version")	
 	airbag = models.BooleanField(default=False)
 	sunroof = models.BooleanField(default=False)
 	bluetooth = models.BooleanField(default=False)
