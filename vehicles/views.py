@@ -50,7 +50,7 @@ class AddToGarage(View):
 
 	
 
-	def get(self,request,id_version):
+	def get(self,request,id_version,mounths):
 
 
 
@@ -58,7 +58,7 @@ class AddToGarage(View):
 		current_user = request.user
 		client = Client.objects.get(user_client = current_user.id)
 
-		g = Garage.objects.create(user_garage=client,user_vehicle=version)
+		g = Garage.objects.create(user_garage=client,user_vehicle=version,monthly_payment=mounths)
 
 		g.save()
 
