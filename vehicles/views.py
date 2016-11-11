@@ -33,7 +33,7 @@ class Detail(View):
 
 		template_name = 'vehicle_detail/detail.html'
 
-		vehicle = Vehicle.objects.filter(pk=id)
+		vehicle = Vehicle.objects.get(pk=id)
 
 
 		version = Vehicle_version.objects.all().filter(vehicle = vehicle)
