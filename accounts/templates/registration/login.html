@@ -13,71 +13,56 @@
 
 {%block content%}
 
-	
-
-	
-
+<section>
 	<div class="container">
-
 		<h1 class="text-center">Iniciar Sesion</h1>
-		
-
 	</div>
 
+	<div class="row">
+		<br>
+		<div class="col-lg-12 col-md-12 text-center">
+			<a href="{% url 'social:begin' 'facebook' %}">
+				<button type="button" class="btn btn-primary btn-lg">
+					<i class="fa fa-facebook" aria-hidden="true"></i>Facebook
+				</button>
+			</a>
+		</div>
 
+		&nbsp;<br>
 
+		<div class="col-lg-12 col-md-12 text-center">
+			<a href="{% url 'social:begin' 'twitter' %}">
+				<button type="button" class="btn btn-info btn-lg">
+					<i class="fa fa-twitter" aria-hidden="true"></i>Twitter
+				</button>
+			</a>
+		</div>
+	</div>
 		
-		
-			<div class="row">
-			<br>
-				<div class="col-lg-12 col-md-12 text-center">
-					<a href="{% url 'social:begin' 'facebook' %}">
-						<button type="button" class="btn btn-primary btn-lg">
-							<i class="fa fa-facebook" aria-hidden="true"></i>Facebook
-						</button>
-					</a>
-				</div>
+	&nbsp;<br>
+	&nbsp;<br>
 
-			&nbsp;<br>
-				<div class="col-lg-12 col-md-12 text-center">
-					<a href="{% url 'social:begin' 'twitter' %}">
-						<button type="button" class="btn btn-info btn-lg">
-							<i class="fa fa-twitter" aria-hidden="true"></i>Twitter
-						</button>
-					</a>
-				</div>
-			</div>
-		
-			&nbsp;<br>
-			&nbsp;<br>
+	<form action="." method="post">
+		{%csrf_token%}
+		<br>
+		<div class="form-group text-center">	
+			{{form.as_p}}
 
-		<form action="." method="post">
-			{%csrf_token%}
-			<br>
-			<div class="form-group text-center">
-				
-				{{form.as_p}}
-
-					<input type="hidden" name="next" value="{{next}}">
-			<input type="submit" name="Iniciar Sesión"> 
-			<br>
-
-			<span>No tienes una cuenta, puedes crearla <a href="/accounts/registry">Aqui!</a></span>
+				<input type="hidden" name="next" value="{{next}}">
+				<input type="submit" name="Iniciar Sesión"> 
+				<br>
+				<span>No tienes una cuenta, puedes crearla <a href="/accounts/registry">Aqui!</a></span>
 
 			{%if form.errors%}
-		<p>Tu usuario y contraseña no concuerdan, porfavor intenta nuevamente</p>
+				<p>Tu usuario y contraseña no concuerdan, porfavor intenta nuevamente</p>
 	
-	{%endif%}
+			{%endif%}
 
-			</div>
+		</div>
 			
 		
-		</form>
-
-			&nbsp;<br>
-			&nbsp;<br>
-
-
-		
-
+	</form>
+	&nbsp;<br>
+	&nbsp;<br>
+</section>
 {%endblock content%}
