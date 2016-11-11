@@ -108,15 +108,17 @@
 		 
 		<div class="row">
 
-			<h3 class="text-center">Versiones</h3>
-			<br>
-			<br>
+			
 
 		
 			
 
 			{%for ver in version%}
 
+
+				<h3 class="text-center">Versiones</h3>
+					<br>
+					<br>
 
 				<div class="col-md-6 {%if version|length|divisibleby:2 == False%}{%if forloop.last%}col-md-offset-3{%endif%}{%endif%}">
 
@@ -350,8 +352,15 @@
 				
 
 				  {% empty %}
+						&nbsp;<br>
+					<div class="col-md-12 text-center"> 
 
-					<p>nada</p>
+						<div class="jumbotron">
+						    <h1>Proximamente</h1> 
+						    <p>En autonomo estamos trabajando para brindarte mas opciones, seguimos creciendo.</p> 
+						 </div>
+
+					</div>
 
 			 {%endfor%}
 
@@ -424,6 +433,8 @@
 								
 								<input class="btn btn-danger btn-block" type="submit" value="Iniciar Sesion" name="">
 							</form>
+
+							<a href="{% url 'accounts:login'%}?next={{request.path}}">Login</a>
 							
 						</div>	
 
