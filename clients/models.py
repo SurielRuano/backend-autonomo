@@ -45,3 +45,12 @@ class Garage(models.Model):
 
 	def __str__(self):
 		return 'Garage numero {}'.format(self.id)
+
+
+# class Agreement(models.Model):
+# 	BOOL_CHOICES = ((True, 'Activo'), (False, 'Finalizado'))
+# 	reference_agreement = models.CharField(max_length=50)
+# 	zone = models.CharField(max_length=50)
+# 	observations = models.TextField()
+# 	date = models.DateField()
+# 	status = models.BooleanField()
