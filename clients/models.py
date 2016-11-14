@@ -22,7 +22,7 @@ class Client(models.Model):
 	salary = models.FloatField(blank=True, null=True)
 	personale_references = models.TextField(blank=True, null=True)
 	user_status = models.BooleanField(choices = BOOL_CHOICES, default=False)
-	photo = models.ImageField(upload_to="users", blank=True)
+	photo = models.ImageField(upload_to="users", blank=True, null=True)
 
 	class Meta:
 		verbose_name="Client"

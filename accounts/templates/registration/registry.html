@@ -7,15 +7,17 @@
 
 {%block styles%}
 	<style type="text/css">
-  		section { padding-bottom: 600px; }
+  		#sectionvh { height: 100vh; }
+  		.centradovh { padding-top: 25vh; }
 	</style>
 {%endblock styles%}
 
 {%block content%}
 
-
 		<div class="container">
 			<div class="row">
+			<section id="sectionvh">
+			<div class="centradovh">
 			<h1 class="text-center">Registro</h1>
 			<br>
 				<form role="form" action="." method="post">
@@ -25,14 +27,14 @@
 						<input type="submit" name="nuevo" placeholder="Crear Usuario">
 					</div>
 				</form>
-
+			</div>
 				<br>
 
 			<p class="text-center">Regresa a Iniciar Sesion <a href="/accounts/login">Aqui!</a></p>
+			</section>
 			</div>
 		</div>
 
 		&nbsp;<br>
 
-	
 {%endblock content%}

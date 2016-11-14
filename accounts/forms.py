@@ -28,12 +28,6 @@ class UserEditForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
 	class Meta:
 		model = Client
-		# widgets = {
-		# 'address': forms.TextInput(attrs={
-		# 	'class':'form-control',
-		# 	'placeholder': 'Direccion',
-		# 	}),
-		# }
 		fields = (
 			'address',
 			'phone_num',

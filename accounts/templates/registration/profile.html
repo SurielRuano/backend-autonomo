@@ -4,7 +4,8 @@
 {%block title%}
 	Profile
 {%endblock title%}
-r 
+
+
 {%block styles%}
 	<style type="text/css">
   		section { padding-bottom: 600px; }
@@ -95,6 +96,10 @@ r
                                             		<a class="btn btn-primary" href="#">
                                             			Empieza a Financiarlo
                                             		</a>
+                                            		<form>
+                                            			<input class="btn btn-danger" type="submit" name="eliminar" value="Eliminar de tu Garage">
+                                            			<input type="hidden" name="id_version_garage" >
+                                            		</form>
                                             	{%endif%}
                                         	</div>
 										</div>
