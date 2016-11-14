@@ -15,9 +15,9 @@ class DetailPaymentAdmin (admin.ModelAdmin):
 	ordering = ['date_payment']
 
 class StockExchangeAdmin (admin.ModelAdmin):
-	list_display=('name', 'maximum_number_customers', 'monthly_payment')
-	list_filter =('maximum_number_customers', 'monthly_payment',)
-	search_fields = ('name', 'maximum_number_customers', 'monthly_payment',)
+	list_display=('name', 'maximum_number_customers', 'monthly')
+	list_filter =('maximum_number_customers', 'monthly',)
+	search_fields = ('name', 'maximum_number_customers', 'monthly',)
 	ordering = ['name']	
 
 admin.site.register(VehicleBooking, VehicleBookingAdmin)

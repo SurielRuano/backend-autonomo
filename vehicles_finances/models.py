@@ -10,7 +10,7 @@ class StockExchange(models.Model):
 	description = models.TextField()
 	maximum_number_customers = models.IntegerField()
 	##Tipo de mensualidad 60 o 40 mensualidades
-	monthly_payment = models.CharField(max_length=200)
+	monthly = models.IntegerField()
 
 	class Meta:
 		verbose_name = "StockExchange"
@@ -21,12 +21,20 @@ class StockExchange(models.Model):
 
 class VehicleBooking (models.Model):
 	BOOL_CHOICES = ((True, 'Adjudicado'),(False, 'No Adjudicado'))
+	BOOL_CHOICES2 = ((True, 'Activo'), (False, 'Finalizado'))
 	id_client = models.ForeignKey(Client, related_name='vehiclebook')
 	id_vehicle = models.ForeignKey(Vehicle, related_name='vehiclebook')
 	id_stock = models.ForeignKey(StockExchange, related_name='vehiclebook')
 	price = models.FloatField()
 	deadline = models.DateField()
 	adjudication = models.BooleanField(choices=BOOL_CHOICES, default=False)
+	##Camos de contrato
+	reference_agreement = models.CharField(max_length=50)
+	zone = models.CharField(max_length=50)
+	observations = models.TextField()
+	date = models.DateField()
+	status = models.BooleanField()
+
 
 
 	class Meta:
