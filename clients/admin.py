@@ -4,7 +4,7 @@ from .models import Client, Garage
 
 
 class ClientAdmin(admin.ModelAdmin):
-	list_display = ('phone_num',)
+	# list_display = ('phone_num',)
 	list_filter = ('rfc', 'curp',)
 	search_fields = ('rfc', 'curp',)
 	ordering = ['rfc']
