@@ -149,7 +149,7 @@ DATABASES['default'].update(db_from_env)
 #Redes sociales
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    #'accounts.authentication.EmailAuthBackend',
+    # 'accounts.authentication.EmailAuthBackend',
     #'accounts.authentication.TelAuthBackend',
     'social.backends.facebook.Facebook2OAuth2',
     'social.backends.twitter.TwitterOAuth',
@@ -160,5 +160,4 @@ SOCIAL_AUTH_FACEBOOK_SECRET = 'fee7e26118cd6b512dfe4a2ae60a997b'
 
 SOCIAL_AUTH_TWITTER_KEY = 'lacKCGU2MjsTVejAr1IOSzsHP'
 SOCIAL_AUTH_TWITTER_SECRET = 'KuIzdObgb5kOhfSI2BCdJLfoOefxnWXSwyj2fJ3buoBcz3Kp1e'
-
-#SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+# SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
