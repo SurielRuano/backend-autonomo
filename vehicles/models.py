@@ -14,6 +14,8 @@ class trademark(models.Model):
 
 class Vehicle(models.Model):
 
+	STATUS_CHOICES = (('unpublished','Unpublished'),('published','Published'),)
+
 	trademark = models.ForeignKey(trademark)	
 	name = models.CharField(max_length=60)
 	anio = models.DateField(auto_now=True)	
@@ -22,7 +24,7 @@ class Vehicle(models.Model):
 	img_left = models.ImageField(upload_to="assets/vehicles/%Y/%m/%d/", blank=True, null=True)
 	img_right = models.ImageField(upload_to= "assets/vehicles/%Y/%m/%d/", blank=True, null=True)
 	img_back = models.ImageField(upload_to= "assets/vehicles/%Y/%m/%d/", blank=True, null=True)
-	
+	publication_status = models.CharField(max_length= 11, choices=STATUS_CHOICES, default = 'unpublished')
 
 	def __str__(self):
 		return self.name
