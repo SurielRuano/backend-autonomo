@@ -1,0 +1,24 @@
+# Facebook decorator to setup environment
+def facebook_decorator(func):
+    def wrapper(request, *args, **kwargs):
+ 
+        # User must me logged via FB backend in order to ensure we talk about the same person
+        if not is_complete_authentication(request):
+            try:
+                social_complete(request, FacebookBackend.name)
+            except ValueError:
+                pass # no matter if failed
+         
+        # Need to re-check the completion
+        if is_complete_authentication(request):
+            kwargs.update({'access_token': get_access_token(request.user)})
+        else:
+            request.user = AnonymousUser()
+ 
+        signed_request = load_signed_request(request.REQUEST.get('signed_request', ''))
+        if signed_request:
+            kwargs.update({'signed_request': signed_request})
+ 
+        return func(request, *args, **kwargs)
+         
+    return wrapper
