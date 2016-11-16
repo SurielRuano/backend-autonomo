@@ -23,6 +23,8 @@ class Client(models.Model):
 	personale_references = models.TextField(blank=True, null=True)
 	user_status = models.BooleanField(choices = BOOL_CHOICES, default=False)
 	photo = models.ImageField(upload_to="users", blank=True, null=True)
+	ide=models.CharField(max_length=50,null=True,blank=True)
+	correo = models.EmailField(blank=True,null=True)
 
 	class Meta:
 		verbose_name="Client"
