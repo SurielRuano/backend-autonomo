@@ -18,7 +18,7 @@ class Vehicles(View):
 
 		template_name = 'catalog/catalog.html'
 
-		queryset = Vehicle.objects.all()
+		queryset = Vehicle.objects.filter(publication_status='published')
 
 		paginator = Paginator(queryset,9)
 		page = request.GET.get('page')

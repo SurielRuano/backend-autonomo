@@ -4,7 +4,14 @@ from .models import Vehicle, Vehicle_version, trademark
 
 # Register your models here.
 
+class DetalleVehiculos(admin.ModelAdmin):
 
-admin.site.register(Vehicle)
+	list_display=('name','trademark','publication_status')
+	list_filter= ('trademark','publication_status')
+	search_fields = ('name','trademark')
+
+
+
+admin.site.register(Vehicle,DetalleVehiculos)
 admin.site.register(Vehicle_version)
 admin.site.register(trademark)
