@@ -69,10 +69,10 @@ class Vehicle_version(models.Model):
 	mp3 = models.BooleanField(default=False)
 	radio = models.BooleanField(default=False)
 
-	img_v1 = models.ImageField(upload_to="assets/vehicles/version")
-	img_v2 = models.ImageField(upload_to="assets/vehicles/version")
-	img_v3 = models.ImageField(upload_to="assets/vehicles/version")
-	img_v4 = models.ImageField(upload_to="assets/vehicles/version")
+	img_v1 = models.ImageField(upload_to="assets/vehicles/version",blank=True,null=True)
+	img_v2 = models.ImageField(upload_to="assets/vehicles/version",blank=True,null=True)
+	img_v3 = models.ImageField(upload_to="assets/vehicles/version",blank=True,null=True)
+	img_v4 = models.ImageField(upload_to="assets/vehicles/version",blank=True,null=True)
 	
 
 

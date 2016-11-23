@@ -2,6 +2,13 @@
 {%load static%}
 {% load humanize %}
 
+
+{% block title %}
+
+	{{vehicle.name | upper}}
+	
+{% endblock title %}
+
 {%block styles%}
 
 	<link rel="stylesheet" type="text/css" href="{%static 'css/vehicle_detail/_detail.css'%}">
@@ -66,7 +73,7 @@
 	 					 		 		<div class="d-img text-center">
 	 								    	  <h1 class="py">{{vehicle.name}}</h1>
 	 								    	  
-	 								     <img  align="center"    src="/media/{{vehicle.img_front}}" > 
+	 								     <img  class ="sliderPrincipal"    src="/media/{{vehicle.img_front}}" > 
 	 								   
 	 									     
 	 								    </div>
@@ -139,7 +146,7 @@
 
 					<div class="col-md-12 text-center">
 						
-						 <img  align="center" height="200px"  src="/media/{{ver.img_front}}" > 
+						 <img  align="center" height="200px"  src="/media/{{ver.img_v1}}" > 
 					</div>
 
 
@@ -431,10 +438,14 @@
 							</div>
 								
 								
-								<input class="btn btn-danger btn-block" type="submit" value="Iniciar Sesion" name="">
+								<input class="btn btn-danger btn-block" type="submit" id="form_login" value="Iniciar Sesion" name="">
 							</form>
 
-							<a href="{% url 'accounts:login'%}?next={{request.path}}">Login</a>
+							<br>
+	
+							<p class="response-txt text-danger"></p>
+
+							<!-- <a href="{% url 'accounts:login'%}?next={{request.path}}">Login</a> -->
 							
 						</div>	
 
@@ -455,73 +466,66 @@
 
 
 
-<!-- 
-
-<div class="row">
-		 		 	
-		 		 		
-
-		 		 		<div class="col-md-12">
-		 		 	&nbsp;<br>
-		 		 			
-		 		 			<table class="table table-hover">
-							    <thead>
-							      <tr>
-							        <th>Version {{ver.version}}</th>
-							        
-							        
-							      </tr>
-							    </thead>
-							    <tbody>
-							      <tr>
-							        <td>Año</td>
-							        <td>2017</td>
-							        
-							      </tr>
-							      <tr>
-							        <td>Linea</td>
-							        <td>{{ver.version}}</td>
-							  
-							      </tr>
-							      <tr>
-							        <td>Numero de Puertas</td>
-							        <td>{{ver.doors_num}}</td>
-							      
-							      </tr>
-							      <tr>
-							       <tr>
-							        <td>Motor</td>
-							        <td>2.0 litros de 115 CV</td>
-				
-							      </tr>
-							        <td>Cilindros</td>
-							        <td>4</td>
-							 
-							      </tr>
-							    </tbody>
-							  </table>
-		 		 			
-		 		 		</div>
-		 		 		<div class="col-md-12">
-		 		
-
-		 		 			
-		 		 			<article>
-		 		 					<h3>Seguridad y Confort</h3>
-		 		 					<p> Edición especial lanzada en el 2001, pintado en Reflex amarillo, un color ofrecido previamente en América del Norte se vende en Internet en modelo LE especial durante la primavera de 2000, y las características únicas de color gris con asientos de color azul brillante incluyendo el logotipo bordado del New Beetle. Esta edición incluía frenos ABS, Dirección asistida, Pintura metalizada, CD, Aire acondicionado, Elevalunas eléctricos, Aros, Airbag conductor, Airbag acompañante, Cierre centralizado, Retrovisores eléctricos, Asiento trasero abatible, Guía en cuero, Airbags laterales, Control de tracción, Control de estabilidad. Otras opciones de pintura eran, Negro, Marlin Blue Pearl; metallic - Ravenna Blue y Reflex Silver.</p>
-
-		 		 					&nbsp;
-		 		 					<br>
-		 		 					<br>
-		 		 					<br>
-
-		 		 			</article>
-		 		 			
-		 		 		</div>
-		 		 	
 
 
-		 		 </div>
+{%block scripts%}
 
- -->
+		<script type="text/javascript">
 
+		$(document).ready(function(){
+
+
+
+					$('#form_login').click(function(e){
+
+				e.preventDefault();
+
+				$.ajax({
+
+					url:'{%url "catalogo:login_ajax"%}',
+					type: 'POST',
+					data:{'csrfmiddlewaretoken':$('input[name="csrfmiddlewaretoken"]').val(),'username':$('#id_username').val(),'password':$('#id_password').val()},
+					success: function(response){
+
+
+							if(response == 'True'){
+
+								$('.btn-login').closest('a').attr('href','{%url "accounts:logout"%}');
+								$('.btn-login').text('Cerrar Sesion');
+
+								$('#myModal2').modal('toggle');
+
+
+							}
+
+							if(response == 'False'){
+
+								$('.response-txt').text("Error al iniciar sesion, verifica que tus datos esten correctos")
+
+							}
+
+							
+							
+					},
+					error : function(xhr,errmsg,err) {
+            
+            alert('hay ya valio ma --- error '+errmsg+' mas datos del error '+xhr.status + " :" + xhr.responseText);
+        }       
+        
+
+				})
+
+
+			})
+
+
+
+
+
+		})
+
+		
+
+		</script>
+
+{%endblock scripts%}

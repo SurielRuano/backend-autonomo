@@ -13,3 +13,12 @@ hr.vehicle_card {
    width: 300px;
    text-align: center; 
  } 
+
+
+.sliderPrincipal{
+
+
+  display:block;
+  height: 60vh;
+  margin: auto;
+}

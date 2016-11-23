@@ -8,6 +8,10 @@ from django.core import serializers
 from django.contrib.auth.forms import AuthenticationForm
 #librerias para paginacion
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+## librearias para autentificacion
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse,HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -82,6 +86,45 @@ class AddToGarage(View):
 		g.save()
 
 		return redirect('accounts:profile')
+
+
+
+
+"""
+	login con ajax jquery
+"""
+
+class LoginAjax(View):
+
+	def post(self,request):
+
+		if request.method == 'POST':
+
+			username = request.POST['username']
+			password = request.POST['password']
+
+			user = authenticate(username=username,password=password)
+
+
+			if user is not None:
+
+				login(request,user)
+
+				return HttpResponse(True)
+
+			else:
+
+				return HttpResponse(False)
+
+		else:
+
+			return HttpResponse(False)
+
+
+		
+
+
+
 
 
 
