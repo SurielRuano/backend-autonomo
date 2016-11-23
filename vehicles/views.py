@@ -6,6 +6,9 @@ from clients.models import Client, Garage
 from django.contrib.auth.models import User
 from django.core import serializers
 from django.contrib.auth.forms import AuthenticationForm
+#librerias para paginacion
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 
 
@@ -17,10 +20,26 @@ class Vehicles(View):
 
 		queryset = Vehicle.objects.all()
 
+		paginator = Paginator(queryset,9)
+		page = request.GET.get('page')
+
+		try:
+
+			vehicles = paginator.page(page)
+
+		except PageNotAnInteger:
+
+			vehicles = paginator.page(1)
+
+		except EmptyPage:
+
+			vehicles = paginator.page(paginator.num_pages)
+
+
 		# [list(Vehicle.tobjects.all()) for Vehicle in queryset]
 
 		#context = {'datos':serializers.serialize("json", queryset)}
-		context = {'vehicles':queryset}
+		context = {'vehicles':vehicles,'pages':page}
 
 
 		return render(request, template_name, context)
