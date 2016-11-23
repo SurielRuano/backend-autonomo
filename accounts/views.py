@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
+from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm, ProofForm
 from django.contrib.auth.models import User
 from clients.models import Client, Garage
 from vehicles.models import Vehicle_version
@@ -38,6 +38,7 @@ class ProfileView(View):
 	@method_decorator(login_required)
 	def get(self, request):
 		template_name= "registration/profile.html"
+		proof = ProofForm(instance=request.user)
 		userform = UserEditForm(instance=request.user)
 		profile = ProfileEditForm(instance=request.user.client)
 		client = Client.objects.get(user_client=request.user)
@@ -46,5 +47,18 @@ class ProfileView(View):
 		'userform':userform,
 		'profile':profile,
 		'garage': garage,
-		}
+		'proof' : proof,		}
 		return render(request, template_name, context)
+
+	def post(self,request):
+		template_name = "registration/profile.html"
+		#client_form = ProofForm()
+		proof = ProofForm(instance=request.user.client, data=request.POST)
+		if proof.is_valid():
+			proof.save()
+			return redirect('accounts:profile')
+		else:
+			context = {
+			'proof':proof
+			}
+			return render(request, template_name,context)
