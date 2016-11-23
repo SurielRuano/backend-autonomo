@@ -1,0 +1,4 @@
+<img src="http://graph.facebook.com/{{request.user.userprofile.ide}}/picture?type=large">
+
+
+<img class="img-responsive"  src="{%if request.user.client.photo%}{{request.user.client.photo.url}}{%else%}{%static '/img/user.jpg'%}{%endif%}" alt="Foto de Perfil" >

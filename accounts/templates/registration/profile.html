@@ -9,6 +9,10 @@
 {%block styles%}
 	<style type="text/css">
   		section { padding-bottom: 600px; }
+  		.modal-bodys {
+    		max-height: calc(90vh - 210px);
+    		overflow-y: auto;
+		}
 	</style>
 	<link rel="stylesheet" type="text/css" href="{%static 'css/profile/_profile.css'%}">
 {%endblock styles%}
@@ -22,7 +26,7 @@
 					<div class="container_userData">
 						<h2>Bienvenido a tu perfil</h2>
 						<figure class="containder_userImg">
-							<img class="img-responsive"  src="{%if request.user.client.photo%}{{request.user.client.photo.url}}{%else%}{%static '/img/user.jpg'%}{%endif%}" alt="Foto de Perfil" >
+							<img class="img-responsive"  src="http://graph.facebook.com/{{request.user.client.ide}}/picture?type=large" alt="Foto de Perfil">
 						</figure>
 						<h3>{{request.user.username|upper}}</h3>
 						<hr class="hrPerfil">
@@ -93,13 +97,9 @@
                                             			Este auto esta en Financiamiento
                                             		</a>
                                             	{%else%}
-                                            		<a class="btn btn-primary" href="#">
+                                            		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalFinaciamiento">
                                             			Empieza a Financiarlo
-                                            		</a>
-                                            		<form>
-                                            			<input class="btn btn-danger" type="submit" name="eliminar" value="Eliminar de tu Garage">
-                                            			<input type="hidden" name="id_version_garage" >
-                                            		</form>
+                                            		</button>
                                             	{%endif%}
                                         	</div>
 										</div>
@@ -138,5 +138,112 @@
 
 			</div>
 		</div> <!--container-->
+
+
+
+<!-- Inicio Modal Financiamiento -->
+		<div class="modal fade" id="modalFinaciamiento" tabindex="-1" role="dialog" aria-labelledby="modalFinaciamientoLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="modalFinaciamientoLabel">
+							Felicidades estas por adquirir tu financiamiento
+						</h4>
+					</div>
+
+					<div class="modal-body">
+						<h1>Terminos y Condiciones</h1>
+						<div class="modal-bodys text-justify">
+							<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda nobis est dignissimos possimus, molestiae illum? Aliquam, provident, consequuntur nesciunt at ut dolore, doloremque error quis expedita suscipit mollitia rem debitis.</div>
+							<div>At hic, ducimus iure temporibus consectetur quas dolorum cupiditate corporis illum molestiae minus rerum illo sint necessitatibus mollitia commodi voluptates omnis quaerat nesciunt! Laboriosam tempora in vel iste accusamus, quas.</div>
+							<div>Harum excepturi error natus alias architecto, veritatis consequuntur atque, sed praesentium delectus quidem quos aliquam recusandae quas quibusdam ullam rerum blanditiis exercitationem non! Ad vero officiis eius consequatur culpa libero.</div>
+							<div>Ducimus nulla quod repudiandae vitae ratione, accusamus minima, officia suscipit optio. Nisi explicabo placeat excepturi ut a reprehenderit quos, numquam officiis similique, porro, voluptate fugiat quod nesciunt ad velit, quaerat!</div>
+							<div>Asperiores eligendi cupiditate officiis est dolores, adipisci, quia doloribus, veniam voluptatem vel placeat provident exercitationem nobis a doloremque accusamus in nihil quo soluta laboriosam. Beatae eius, dolor natus itaque non.</div>
+							<div>Praesentium dolorem quo sapiente dolor molestiae, vel quod possimus atque dolores error debitis temporibus incidunt impedit minus fugiat consequatur ducimus quidem iure sequi voluptate dolore inventore nulla expedita. Dolorem, nisi!</div>
+							<div>Similique odio est molestias animi explicabo, cupiditate rem saepe sequi tenetur deserunt temporibus tempore. Fugit beatae qui, rem libero, cupiditate perferendis sed, nobis est doloremque tempora facere, quia ullam numquam.</div>
+							<div>Incidunt possimus voluptas aperiam saepe quam nostrum ipsa architecto delectus fuga odit quo, cum illo officiis dolor cumque perspiciatis a rerum eum harum. Aspernatur totam animi quaerat maxime? Ducimus, maxime.</div>
+							<div>Vitae modi, totam libero! Laudantium quas totam recusandae consequatur asperiores doloribus quaerat voluptates culpa delectus porro ex qui aliquid ratione numquam dicta mollitia, odio, ad, placeat alias accusamus facilis cumque!</div>
+							<div>Vero placeat laudantium obcaecati ex error nobis cumque numquam minima deserunt est dolorem reprehenderit eligendi soluta at sequi vitae debitis sed maxime, accusamus et? Ea corporis tenetur ducimus doloribus officia!</div>
+							<div>Quibusdam nam, esse labore impedit culpa repellat minus quas a qui beatae totam sunt sint optio hic accusamus nihil quaerat. Laboriosam quis labore libero modi sapiente assumenda eveniet, a non.</div>
+							<div>Veritatis neque culpa quasi optio aspernatur voluptate, ipsum. Aspernatur soluta dicta harum vero rerum cumque, omnis obcaecati enim sapiente pariatur! Ad magnam voluptas fuga at porro quos veritatis, ullam ipsa!</div>
+							<div>Praesentium fugiat magnam sequi aut veritatis cum cupiditate, impedit iure ad doloribus nemo debitis non voluptatem sint soluta blanditiis similique incidunt quisquam distinctio porro, explicabo natus, culpa! Dolore, aliquid, nemo.</div>
+							<div>Voluptatibus dolorem inventore, sequi deserunt praesentium dolores asperiores distinctio quas consectetur sit sint atque recusandae quaerat reiciendis blanditiis magnam ea aut, et, ipsam ipsa optio velit, dolor consequatur nostrum! Saepe?</div>
+							<div>Corporis veniam debitis cumque qui quasi beatae voluptatem, fugiat eos ut nemo reprehenderit aut impedit sequi esse velit ducimus tempore doloribus itaque distinctio officiis hic ratione, sit. Architecto velit, expedita.</div>
+							<div>Corporis excepturi numquam esse, officiis consequatur aut odit a voluptate ab, in facilis reprehenderit quidem sapiente doloribus fuga dolores, repellendus beatae nihil! Rerum ratione vel ipsam fugiat adipisci aperiam ipsa.</div>
+							<div>Blanditiis quisquam error id nulla, consequatur odit totam iste nihil officia ad consectetur voluptate illum, minima aliquam ea dolore, voluptatem magnam dicta. At nemo ex est, repellat placeat odio vel.</div>
+							<div>Deleniti voluptate sequi ducimus maiores, incidunt labore architecto laudantium repudiandae cum facere officiis impedit quod asperiores eaque, optio ipsam consequuntur consequatur animi! Doloremque mollitia assumenda dolore et accusantium rerum repellendus!</div>
+							<div>Eius ducimus, quas voluptas at nihil aliquam quod voluptates, repellendus consequatur dolore porro exercitationem aut molestias iste odio et, quam earum, enim nam fugit nostrum accusamus in vero voluptatum. Consequuntur.</div>
+							<div>Deleniti recusandae assumenda iste eveniet suscipit ullam ipsa voluptatibus ipsam eligendi neque veritatis fugiat vitae commodi, tempore, consequuntur repellendus voluptas accusantium aperiam maxime. Doloremque debitis in molestias ratione, quae ipsum.</div>
+						</div>
+						<div class="checkbox">
+							<label>
+						    	<input type="checkbox" value="" id="checktyc">
+						    	Acepto Terminos y Condiciones
+							</label>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalFormu" data-target=".bs-example-modal-lg">
+							<div data-dismiss="modal">
+								<div class="col-md-1"">
+									<i class="fa fa-hand-o-right" aria-hidden="true"></i>
+								</div>
+								<div class="col-md-9">
+									Continuar
+								</div>
+							</div>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Modal Formulario -->
+		<div class="modal fade bs-example-modal-lg" id="modalFormu" tabindex="-1" role="dialog" aria-labelledby="modalFormuLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="modalFormuLabel">
+							Felicidades estas por adquirir tu financiamiento
+						</h4>
+					</div>
+
+					<div class="modal-body">
+						<form role="form" action=".">
+						  <div class="form-group">
+						    <label for="ejemplo_email_1">Email</label>
+						    <input type="email" class="form-control" id="ejemplo_email_1"
+						           placeholder="Introduce tu email">
+						  </div>
+
+						  <div class="form-group">
+						  	{{proof.as_p}}
+						  </div>
+						  <button type="submit" class="btn btn-default">Enviar</button>
+						</form>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success btn-lg">
+							<div class="col-md-1">
+								<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+							</div>
+							<div class="col-md-9">
+								Financiar							
+							</div>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</section>
+
 {%endblock content%}
