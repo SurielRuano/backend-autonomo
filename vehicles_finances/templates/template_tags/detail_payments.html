@@ -1,0 +1,9 @@
+<div class="widget">
+<h4 class="widget_title"><span>Categorias</span></h4>   
+<ul>
+	{%for payment in payments%}
+<li><a href="#"><strong>{{payment.concept}}</strong><strong>{{payment.amount}}</strong></a></li>
+
+	{%endfor%}
+</ul>
+</div>

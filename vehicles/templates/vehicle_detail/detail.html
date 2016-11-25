@@ -2,7 +2,7 @@
 {%load static%}
 {% load humanize %}
 
-
+{%load vehicles_finances_tags%}
 {% block title %}
 
 	{{vehicle.name | upper}}
@@ -528,6 +528,7 @@
 			</div>
 		</div>
 
+	{%show_payments%}
 
 
 	{%endblock content%} 
