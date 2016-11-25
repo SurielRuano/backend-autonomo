@@ -216,17 +216,10 @@
 					</div>
 
 					<div class="modal-body">
-						<form role="form" action=".">
-						  <div class="form-group">
-						    <label for="ejemplo_email_1">Email</label>
-						    <input type="email" class="form-control" id="ejemplo_email_1"
-						           placeholder="Introduce tu email">
-						  </div>
-
-						  <div class="form-group">
+						<form role="form" action="." method="post">
+						  	{%csrf_token%}
 						  	{{proof.as_p}}
-						  </div>
-						  <button type="submit" class="btn btn-default">Enviar</button>
+						  <input class="btn btn-primary" type="Submit" name="Salvar" placeholder="Guardar">
 						</form>
 					</div>
 

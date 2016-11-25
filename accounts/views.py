@@ -38,7 +38,7 @@ class ProfileView(View):
 	@method_decorator(login_required)
 	def get(self, request):
 		template_name= "registration/profile.html"
-		proof = ProofForm(instance=request.user)
+		proof = ProofForm(instance=request.user.client)
 		userform = UserEditForm(instance=request.user)
 		profile = ProfileEditForm(instance=request.user.client)
 		client = Client.objects.get(user_client=request.user)
@@ -56,7 +56,7 @@ class ProfileView(View):
 		proof = ProofForm(instance=request.user.client, data=request.POST)
 		if proof.is_valid():
 			proof.save()
-			return redirect('accounts:profile')
+			return redirect('home')
 		else:
 			context = {
 			'proof':proof
