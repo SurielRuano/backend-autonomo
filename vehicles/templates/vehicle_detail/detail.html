@@ -120,15 +120,15 @@
 
 			
 
-		
+		<h3 class="text-center">Versiones</h3>
+					<br>
+					<br>
 			
 
 			{%for ver in version%}
 
 
-				<h3 class="text-center">Versiones</h3>
-					<br>
-					<br>
+				
 
 				<div class="col-md-6 {%if version|length|divisibleby:2 == False%}{%if forloop.last%}col-md-offset-3{%endif%}{%endif%}">
 
@@ -148,8 +148,12 @@
 					</div>
 
 					<div class="col-md-12 text-center">
-						
-						 <img  align="center" height="200px"  src="/media/{{ver.img_v1}}" > 
+						{%if ver.img_v1%}
+						 	<img  align="center" height="200px"  src="/media/{{ver.img_v1}}" > 
+						{%else%}
+							 <img  align="center" height="200px"  src="{%static 'img/clients_frontend/vehicle_detail/vehicle_default.jpg'%}" > 
+							
+						{%endif%}
 					</div>
 
 
