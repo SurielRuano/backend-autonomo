@@ -31,7 +31,7 @@ class RegistryView (View):
 			context = {
 			'form':new_user_f,
 			}
-			return redirect(request, template_name, context)
+			return render(request, template_name, context)
 
 
 class ProfileView(View):
