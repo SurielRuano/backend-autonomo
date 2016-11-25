@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{%load vehicles_finances_tags%}
 {%load static%}
 {%load humanize%}
 {%block title%}
@@ -131,7 +132,8 @@
 		                    </div>
 						</div>
 						<div role="tabpanel" class="tab-pane" id="pagos">
-								Aún no cuentas con ningun pagó
+								{%show_payments%}
+
 						</div>
 					</div>
 				</article>
