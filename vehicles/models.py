@@ -25,7 +25,7 @@ class Vehicle(models.Model):
 	img_right = models.ImageField(upload_to= "assets/vehicles/%Y/%m/%d/", blank=True, null=True)
 	img_back = models.ImageField(upload_to= "assets/vehicles/%Y/%m/%d/", blank=True, null=True)
 	publication_status = models.CharField(max_length= 11, choices=STATUS_CHOICES, default = 'unpublished')
-	v_slug = models.SlugField(max_length=250,unique_for_date='publish', null=True, blank=True)
+	v_slug = models.SlugField(max_length=250,unique=True, null=True, blank=True)
 
 	def __str__(self):
 		return self.name

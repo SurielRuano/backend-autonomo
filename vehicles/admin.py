@@ -9,6 +9,7 @@ class DetalleVehiculos(admin.ModelAdmin):
 	list_display=('name','trademark','publication_status')
 	list_filter= ('trademark','publication_status')
 	search_fields = ('name','trademark')
+	prepopulated_fields = {"v_slug": ("name",)}
 
 
 class trademarkl(admin.ModelAdmin):
