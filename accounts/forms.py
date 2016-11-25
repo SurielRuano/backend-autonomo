@@ -2,8 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from clients.models import Client
 
-CHOICES = (('Ho','Hombre'), ('Mu','Mujer'))
-CHOICESM = (('casado', 'Casado'), ('soltero', 'Soltero'))
+CHOICES = (('Ho','Hombre'), ('Mu','Mujer'),)
+CHOICESM = (('casado', 'Casado'), ('soltero', 'Soltero'),)
 
 class UserRegistrationForm(forms.ModelForm):
 	password = forms.CharField(label="Password", widget=forms.PasswordInput)
@@ -47,46 +47,63 @@ class ProfileEditForm(forms.ModelForm):
 			)
 
 class ProofForm(forms.ModelForm):
+    address = forms.CharField(label="Dirección", widget=forms.TextInput(attrs={'class' : 'form-control', 
+      'type' : 'text', 
+      'placeholder' : 'Dirección' }))
+
+    phone_num = forms.IntegerField(label="Número Telefónico", widget=forms.TextInput(attrs={'class' : 'form-control', 
+      'type' : 'number', 
+      'placeholder' : 'Número Telefónico'}))
+
+    birthday = forms.DateTimeField(label="Fecha de nacimiento", widget=forms.TextInput(attrs={'class' : 'form-control'}))
+
+    rfc = forms.CharField(label="RFC", widget=forms.TextInput(attrs={'class' : 'form-control', 
+      'type' : 'text', 
+      'placeholder': 'RFC'}))
+
+    curp =  forms.CharField(label="Curp", widget=forms.TextInput(attrs = {'class' : 'form-control', 
+      'type' : 'text', 
+      'placeholder' : 'Curp'}))
+
+    gender = forms.ChoiceField(choices = CHOICES, label='Sexo', widget=forms.Select(attrs = {'class' : 'form-control'}))
+
+    nationality = forms.CharField(label="Nacionalidad", widget=forms.TextInput(attrs = {'class' : 'form-control',
+      'type' : 'text',
+      'placeholder' : 'Nacionalidad'}))
+
+    marital_status = forms.ChoiceField(choices = CHOICESM, label="Estado Civil", widget = forms.Select(attrs = {'class' : 'form-control'}))
+    
+    scholarship = forms.CharField(label="Escolaridad", widget = forms.TextInput(attrs = {'class' : 'form-control', 
+      'type' : 'text',
+      'placeholder' : 'Escolaridad'}))
+
+    ocuppation = forms.CharField(label="Ocupación", widget = forms.TextInput(attrs = {'class' : 'form-control',
+      'placeholder' : 'Ocupación'}))
+
+    salary = forms.CharField(label="Salario", widget=forms.TextInput(attrs = {'class' : 'form-control',
+      'type' : 'text',
+      'placeholder' : 'Salario'}))
     class Meta:
         model = Client
-        fields = ('address',)
+        fields = ('address',
+            'phone_num',
+            'rfc',
+            'birthday',
+            'rfc',
+            'curp',
+            'gender',
+            'nationality',
+            'marital_status',
+            'scholarship',
+            'ocuppation',
+            'salary',
+            )
 
-    def __init__(self, *args, **kwargs):
-        super(ProofForm, self).__init__(*args, **kwargs)
-        self.fields['address'].widget.attrs.update({'class' : 'form-control'})
-    # address = forms.CharField(label="Dirección", widget=forms.TextInput(attrs={'class' : 'form-control', 
-    # 	'type' : 'text', 
-    # 	'placeholder' : 'Dirección' }))
 
-    # phone_num = forms.IntegerField(label="Número Telefónico", widget=forms.TextInput(attrs={'class' : 'form-control', 
-    # 	'type' : 'number', 
-    # 	'placeholder' : 'Número Telefónico'}))
+###Funcion para modificar el formulario de 
+    # def __init__(self, *args, **kwargs):
+    #     super(ProofForm, self).__init__(*args, **kwargs)
+    #     self.fields['address'].widget.attrs.update({'class' : 'form-control', 'rows' : 2})
+    #     self.fields['phone_num'].widget.attrs.update({'class' : 'form-control'})
 
-    # birthday = forms.DateTimeField(label="Fecha de nacimiento", widget=forms.TextInput(attrs={'class' : 'form-control'}))
-
-    # rfc = forms.CharField(label="RFC", widget=forms.TextInput(attrs={'class' : 'form-control', 
-    # 	'type' : 'text', 
-    # 	'placeholder': 'RFC'}))
-
-    # curp =  forms.CharField(label="Curp", widget=forms.TextInput(attrs = {'class' : 'form-control', 
-    # 	'type' : 'text', 
-    # 	'placeholder' : 'Curp'}))
-
-    # gender = forms.ChoiceField(choices = CHOICES, label='Sexo', widget=forms.Select(attrs = {'class' : 'form-control'}))
-
-    # nationality = forms.CharField(label="Nacionalidad", widget=forms.TextInput(attrs = {'class' : 'form-control',
-    # 	'type' : 'text',
-    # 	'placeholder' : 'Nacionalidad'}))
-
-    # marital_status = forms.ChoiceField(choices = CHOICESM, label="Estado Civil", widget = forms.Select(attrs = {'class' : 'form-control'}))
     
-    # scholarship = forms.CharField(label="Escolaridad", widget = forms.TextInput(attrs = {'class' : 'form-control', 
-    # 	'type' : 'text',
-    # 	'placeholder' : 'Escolaridad'}))
-
-    # ocuppation = forms.CharField(label="Ocupación", widget = forms.TextInput(attrs = {'class' : 'form-control',
-    # 	'placeholder' : 'Ocupación'}))
-
-    # salary = forms.CharField(label="Salario", widget=forms.TextInput(attrs = {'class' : 'form-control',
-    # 	'type' : 'text',
-    # 	'placeholder' : 'Salario'}))
