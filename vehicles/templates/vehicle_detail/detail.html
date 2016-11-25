@@ -12,8 +12,11 @@
 {%block styles%}
 
 	<link rel="stylesheet" type="text/css" href="{%static 'css/vehicle_detail/_detail.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/animate.css'%}">
+
 
 {%endblock styles%}
+
 
 {%block content%}
 
@@ -195,11 +198,16 @@
 													
 													
 													{%if request.user.is_authenticated%}
-														<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' id_version=ver.pk mounths=40%}">Agrega al Garage</a>
+
+														 <a class ="btn btn-danger btn-lg btn-block btnAddToGarage" href="{%url 'catalogo:agregarG' id_version=ver.pk mounths=40%}">Agrega al Garage</a>
+
+														 <a  class="btn btn-danger btn-lg btn-block btnLoginAddToGarage hblock"  data-id-vehicle="{{ver.pk}}" data-mounth="40" >Agrega al Garage</a>
 
 													{%else%}
 
-														<a class ="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Agrega al Garage</a>
+														<a class ="btn btn-danger btn-lg btn-block btnLoginAddToGarage"  data-id-vehicle="{{ver.pk}}" data-mounth="40">Agrega al Garage</a>
+
+														<a class ="btn btn-danger btn-lg btn-block btnAddToGarage hblock" href="{%url 'catalogo:agregarG' id_version=ver.pk mounths=40%}">Agrega al Garage</a>
 
 													{%endif%}
 											</div>
@@ -234,11 +242,15 @@
 														
 															
 														{%if request.user.is_authenticated%}
-																<a class ="btn btn-danger btn-lg btn-block" href="{%url 'catalogo:agregarG' id_version=ver.pk mounths=60%}">Agrega al Garage</a>
+																<a class ="btn btn-danger btn-lg btn-block btnAddToGarage" href="{%url 'catalogo:agregarG' id_version=ver.pk mounths=60%}">Agrega al Garage</a>
+
+																<a  class="btn btn-danger btn-lg btn-block btnLoginAddToGarage hblock"  data-id-vehicle="{{ver.pk}}" data-mounth="60" >Agrega al Garage</a>
 
 														{%else%}
 
-																<a class ="btn btn-danger btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Agrega al Garage</a>
+																<a class ="btn btn-danger btn-lg btn-block btnLoginAddToGarage"  data-id-vehicle="{{ver.pk}}" data-mounth="60" >Agrega al Garage</a>
+
+																<a class ="btn btn-danger hblock btn-lg btnAddToGarage btn-block" href="{%url 'catalogo:agregarG' id_version=ver.pk mounths=60%}">Agrega al Garage</a>
 																	
 
 														{%endif%}
@@ -384,79 +396,132 @@
 
 
 <!-- Modal -->
-		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title" id="myModalLabel">Registrate o inicia Sesion </h4>
-		      </div>
-		      <div class="modal-body">
-		        <!-- 16:9 aspect ratio -->
-		        <div class="row">
-					<br>
-						<div class="col-md-10 col-md-offset-1 text-center">
-							<a href="{% url 'social:begin' 'facebook' %}">
-								<button type="button" class="btn btn-primary btn-block">
-									<i class="fa fa-facebook" aria-hidden="true"></i> Facebook
-								</button>
-							</a>
-						</div>
+		<div class="modal fade" id="modalAddToGarage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="vertical-alignment-helper">
+			  <div class="modal-dialog vertical-align-center" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Registrate o inicia Sesion </h4>
+			      </div>
 
-					&nbsp;<br>
-					&nbsp;<br>
-				
-						<div class="col-md-10 col-md-offset-1 text-center">
-							<a href="{% url 'social:begin' 'twitter' %}">
-								<button type="button" class="btn btn-info btn-block">
-									<i class="fa fa-twitter" aria-hidden="true"></i> Twitter
-								</button>
-							</a>
-						</div>
+			     
+			      <div class="modal-body">
+			        <!-- 16:9 aspect ratio -->
+			        <div class="row">
+						<br>
+							<div class="col-md-10 col-md-offset-1 text-center">
+								<a href="{% url 'social:begin' 'facebook' %}">
+									<button type="button" class="btn btn-primary btn-block">
+										<i class="fa fa-facebook" aria-hidden="true"></i> Facebook
+									</button>
+								</a>
+							</div>
 
 						&nbsp;<br>
-					&nbsp;<br>
-					&nbsp;<br>
-
-						<div class="col-md-10 col-md-offset-1">
-							
-							<form action="{%url 'accounts:login' %}" method="POST">
-							{%csrf_token%}
-
-							<div class="form-group">
-							<label>Usuario</label>
-							
-							<input class="form-control" id="id_username" maxlength="254" name="username" type="text" required="" placeholde="Usuario">
-
-							
-
+						&nbsp;<br>
+					
+							<div class="col-md-10 col-md-offset-1 text-center">
+								<a href="{% url 'social:begin' 'twitter' %}">
+									<button type="button" class="btn btn-info btn-block">
+										<i class="fa fa-twitter" aria-hidden="true"></i> Twitter
+									</button>
+								</a>
 							</div>
-							<div class="form-group">
-							<label>Contraseña</label>
 
-								<input class="form-control" id="id_password" name="password" type="password" required="" placeholde="Contraseña">
-							</div>
+							&nbsp;<br>
+						&nbsp;<br>
+						&nbsp;<br>
+
+							<div class="col-md-10 col-md-offset-1">
+								
+								<form action="{%url 'accounts:login' %}" method="POST">
+								{%csrf_token%}
+
+								<div class="form-group">
+								<label>Usuario</label>
+								
+								<input class="form-control" id="id_username" maxlength="254" name="username" type="text" required="" placeholde="Usuario">
+
+								
+
+								</div>
+								<div class="form-group">
+								<label>Contraseña</label>
+
+									<input class="form-control" id="id_password" name="password" type="password" required="" placeholde="Contraseña">
+								</div>
+								<input  id="id_vehicle" name="username" type="hidden">
+								<input id="id_mounth"  name="username" type="hidden" >
+									
+									
+									<a class="btn btn-danger btn-block" id="form_login">Iniciar Sesion &nbsp;&nbsp;&nbsp;<div class="loader hblock"></div></a>
+								</form>
+
+								<br>
+		
+								<p class="response-txt text-danger"></p>
+
+								<!-- <a href="{% url 'accounts:login'%}?next={{request.path}}">Login</a> -->
+								
+							</div>	
+
+
+				</div>
+				
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+			      </div>
+			    </div>
+			  </div>
+		   </div>
+		</div>
+
+
+<!-- Modal what do after login ajax-->
+
+		<div class="modal fade" id="afterLoginAjax" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="vertical-alignment-helper">
+			  <div class="modal-dialog vertical-align-center" role="document">
+			    <div class="modal-content">
+			     
+			      <div class="modal-body">
+			       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <div class="row">
+						
+							
+
+							<div class="col-md-10 col-md-offset-1">							
+								
+			
+								<div class="text-center">
+
+								<h3>El automovil fue agregado a tu garage!</h3>								
+
+								</div>
 								
 								
-								<input class="btn btn-danger btn-block" type="submit" id="form_login" value="Iniciar Sesion" name="">
-							</form>
 
-							<br>
-	
-							<p class="response-txt text-danger"></p>
+								<div class="col-md-12" align="center">
+										<img class="img_vd_succes"  src="{%static 'img/clients_frontend/vehicle_detail/success.svg'%}">
+									<br>
+										<button data-dismiss="modal" class="btn btn-info" href="">Seguir buscando</button>
+										<a class="btn btn-danger" href="{%url 'accounts:profile'%}">Ir a tu garage</a>
+											<br>
+								</div>	
 
-							<!-- <a href="{% url 'accounts:login'%}?next={{request.path}}">Login</a> -->
+
 							
-						</div>	
+							</div>	
 
 
+				</div>
+			      </div>
+			      
+			    </div>
+			  </div>
 			</div>
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-		      </div>
-		    </div>
-		  </div>
 		</div>
 
 
@@ -474,26 +539,63 @@
 
 		$(document).ready(function(){
 
+			//$('#afterLoginAjax').modal('toggle');
+			//$('#modalAddToGarage').modal('toggle');
+
+			$.fn.extend({
+			    animateCss: function (animationName) {
+			        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+			        this.addClass('animated ' + animationName).one(animationEnd, function() {
+			            $(this).removeClass('animated ' + animationName);
+			        });
+			    }
+			});
 
 
-					$('#form_login').click(function(e){
+			$('.btnLoginAddToGarage').click(function(){
+
+
+				v = $(this).data('idVehicle');
+				$('#id_vehicle').val($(this).data('idVehicle'));
+				$('#id_mounth').val($(this).data('mounth'))
+
+				$('#modalAddToGarage').modal('toggle');
+			})
+
+
+			$('#form_login').click(function(e){
+
+				
 
 				e.preventDefault();
+				
+
 
 				$.ajax({
 
 					url:'{%url "catalogo:login_ajax"%}',
 					type: 'POST',
-					data:{'csrfmiddlewaretoken':$('input[name="csrfmiddlewaretoken"]').val(),'username':$('#id_username').val(),'password':$('#id_password').val()},
+					data:{'csrfmiddlewaretoken':$('input[name="csrfmiddlewaretoken"]').val(),'username':$('#id_username').val(),'password':$('#id_password').val(),'vehicle':$('#id_vehicle').val(),'mounth':$('#id_mounth').val()},
+					beforeSend: function(){
+
+						$('.loader').show()
+						$('.loader').css('display','inline-block')
+
+					},
 					success: function(response){
 
-
+							$('.loader').hide()
 							if(response == 'True'){
 
 								$('.btn-login').closest('a').attr('href','{%url "accounts:logout"%}');
 								$('.btn-login').text('Cerrar Sesion');
 
-								$('#myModal2').modal('toggle');
+								$('#modalAddToGarage').modal('toggle');
+
+								$('#afterLoginAjax').modal('toggle');
+
+								$('.btnLoginAddToGarage').hide()
+								$('.btnAddToGarage').show()
 
 
 							}
@@ -501,6 +603,9 @@
 							if(response == 'False'){
 
 								$('.response-txt').text("Error al iniciar sesion, verifica que tus datos esten correctos")
+								$('#modalAddToGarage').animateCss('shake');
+								$('#id_username, #id_password').css('border','solid red 2px')
+				
 
 							}
 
@@ -508,8 +613,11 @@
 							
 					},
 					error : function(xhr,errmsg,err) {
+
+				$('.response-txt').text("Error inesperado por favor intenta despues");
             
-            alert('hay ya valio ma --- error '+errmsg+' mas datos del error '+xhr.status + " :" + xhr.responseText);
+            	//alert('Error '+errmsg+' mas datos del error '+xhr.status + " :" + xhr.responseText);
+            	alert('Por seguridad tu token ha caducado, recarga la pagina y vuelve a intentarlo');
         }       
         
 
