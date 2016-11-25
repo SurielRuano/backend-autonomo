@@ -102,6 +102,8 @@ class LoginAjax(View):
 
 			username = request.POST['username']
 			password = request.POST['password']
+			id_vehicle = request.POST['vehicle']
+			mounths = request.POST['mounth']
 
 			user = authenticate(username=username,password=password)
 
@@ -109,6 +111,14 @@ class LoginAjax(View):
 			if user is not None:
 
 				login(request,user)
+
+				version = Vehicle_version.objects.get(pk=id_vehicle)
+				current_user = request.user
+				client = Client.objects.get(user_client = current_user.id)
+
+				g = Garage.objects.create(user_garage=client,user_vehicle=version,monthly_payment=mounths)
+
+				g.save()
 
 				return HttpResponse(True)
 
