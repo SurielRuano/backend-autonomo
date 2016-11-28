@@ -1,9 +1,26 @@
+{%extends 'base.html'%}
+
 {% load humanize %}
 
 
+{% block title %}
+		Detalle de Pagos
+{% endblock title %}
 
 
-<h1>{{user_id}}</h1>
+{% block content %}
+
+<br>
+<br>
+<h1 class="text-center">Mis pagos</h1>
+
+		<div class="container" style="min-height: 400px">
+	
+	<div class="row">
+		
+
+	<div class="col-md-12">
+
 
 			<div class="table-responsive">
 
@@ -38,6 +55,25 @@
 					
 
 			</div>
+
+		
+
+
+
+	</div>
+	<div class="col-md-12 text-center">
+		
+		<a class="btn btn-info" href="/accounts/profile/contratos">Regresar</a>
+	</div>
+
+	</div>
+</div>
+
+
+	
+{% endblock content %}
+
+			
 	
 
 
