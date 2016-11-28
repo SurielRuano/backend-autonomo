@@ -65,14 +65,16 @@ class ProfileView(View):
 		template_name= "registration/profile.html"
 		proof = ProofForm(instance=request.user.client)
 		userform = UserEditForm(instance=request.user)
-		profile = ProfileEditForm(instance=request.user.client)
+		# profile = ProfileEditForm(instance=request.user.client)
+		profile = Client.objects.get(user_client=request.user)
 		client = Client.objects.get(user_client=request.user)
 		garage = Garage.objects.all().filter(user_garage=client)
 		context = {
 		'userform':userform,
 		'profile':profile,
 		'garage': garage,
-		'proof' : proof,		}
+		'proof' : proof,		
+		}
 		return render(request, template_name, context)
 
 	def post(self,request):
