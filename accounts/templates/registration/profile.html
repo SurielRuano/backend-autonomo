@@ -14,6 +14,10 @@
     		max-height: calc(90vh - 210px);
     		overflow-y: auto;
 		}
+		.modal-bodysf {
+    		max-height: calc(90vh - 210px);
+    		overflow-y: auto;
+		}
 	</style>
 	<link rel="stylesheet" type="text/css" href="{%static 'css/profile/_profile.css'%}">
 {%endblock styles%}
@@ -121,14 +125,37 @@
 		                        </div>
 		                    </div>
 		                    <div class="col-md-12">
+		                    	Datos de Usuario
 		                    	<form role="form" action="." method="post">
 		                    		<div class="form-group">
 										{%csrf_token%}
 										{{userform.as_p}}
-										{{profile.as_p}}
 										<input class="btn btn-primary" type="Submit" name="Guardar" placeholder="Guardar Tu Informacion">
 		                    		</div>
 								</form>
+								<h2>Tu información</h2>
+								<h4><strong>Dirección</strong></h4>
+								<h4>{{profile.address}}</h4>
+								<h4><strong>Número Telefonico</strong></h4>
+								<h4>{{profile.phone_num}}</h4>
+								<h4><strong>Fecha de Nacimiento</strong></h4>
+								<h4>{{profile.birthday}}</h4>
+								<h4><strong>RFC</strong></h4>
+								<h4>{{profile.rfc}}</h4>
+								<h4><strong>Curp</strong></h4>
+								<h4>{{profile.curp}}</h4>
+								<h4><strong>Género</strong></h4>
+								<h4>{{profile.gender}}</h4>
+								<h4><strong>Nacionalidad</strong></h4>
+								<h4>{{profile.nationality}}</h4>
+								<h4><strong>Estado Civil</strong></h4>
+								<h4>{{profile.marital_status}}</h4>
+								<h4><strong>Escolaridad</strong></h4>
+								<h4>{{profile.scholarship}}</h4>
+								<h4><strong>Ocupación</strong></h4>
+								<h4>{{profile.ocuppation}}</h4>
+								<h4><strong>Salario</strong></h4>
+								<h4>{{profile.salary}}</h4>
 		                    </div>
 						</div>
 						<div role="tabpanel" class="tab-pane" id="pagos">
@@ -188,15 +215,9 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalFormu" data-target=".bs-example-modal-lg">
-							<div data-dismiss="modal">
-								<div class="col-md-1"">
-									<i class="fa fa-hand-o-right" aria-hidden="true"></i>
-								</div>
-								<div class="col-md-9">
-									Continuar
-								</div>
-							</div>
+						<button type="button" class="btn btn-primary btn-lg aceptermsycond">
+								<i class="fa fa-hand-o-right" aria-hidden="true"></i>
+								Continuar
 						</button>
 					</div>
 				</div>
@@ -218,11 +239,13 @@
 					</div>
 
 					<div class="modal-body">
-						<form role="form" action="." method="post">
-						  	{%csrf_token%}
-						  	{{proof.as_p}}
-						  <input class="btn btn-primary" type="Submit" name="Salvar" placeholder="Guardar">
-						</form>
+						<div class="modal-bodysf">
+							<form role="form" action="." method="post">
+							  	{%csrf_token%}
+							  	{{proof.as_p}}
+							  <input class="btn btn-primary" type="Submit" name="Salvar" placeholder="Guardar">
+							</form>
+						</div>
 					</div>
 
 					<div class="modal-footer">
@@ -238,7 +261,25 @@
 				</div>
 			</div>
 		</div>
-
+	<!-- Data Tables -->
 	</section>
 
+
 {%endblock content%}
+	
+
+	{%block scripts%}
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.aceptermsycond').click(function(){
+					if ($('#checktyc').is(':checked')) {
+						$('#modalFinaciamiento').modal("toggle");
+						$('#modalFormu').modal("toggle");
+					} else {
+						alert("Debes aceptar terminos y condiciones")
+					}
+				})
+			})
+		</script>
+	{%endblock scripts%}	
+
