@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
 from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm, ProofForm
 from django.contrib.auth.models import User
@@ -6,6 +6,31 @@ from clients.models import Client, Garage
 from vehicles.models import Vehicle_version
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+
+
+##Para utilizar el PDF
+from django.conf import settings
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+import weasyprint
+
+# @staff_member_required
+def admin_order_pdf(request, info_id):
+	client = get_object_or_404(Client, id=info_id)
+	html = render_to_string('pdf/pdf.html', {'client':client})
+	response = HttpResponse(content_type='application/pdf')
+	response['Content-Disposition'] = 'file_name = \
+		"cliente_{}.pdf"'.format(client.id)
+	weasyprint.HTML(string=html).write_pdf(response,
+		stylesheets=[weasyprint.CSS(settings.STATIC_ROOT + '/css/pdf.css')])
+	return response
+
+
+		# stylesheets=[weasyprint.CSS(
+		# 	settings.STATIC_URL + 'pdfs/contratos.css')]
+
+
+
 # Create your views here.
 class RegistryView (View):
 	def get(self, request):

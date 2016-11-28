@@ -7,4 +7,5 @@ urlpatterns = [
 	url(r'^registry/$', views.RegistryView.as_view(), name="registry"),
 	url(r'^login/$', login, name="login"),
 	url(r'^logout/$', logout,{'next_page': '/'}, name="logout" ),
+	url(r'^cliente/(?P<info_id>\d+)/pdf/$', views.admin_order_pdf, name='cliente'),
 ]

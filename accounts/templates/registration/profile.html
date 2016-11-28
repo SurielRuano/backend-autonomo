@@ -188,15 +188,9 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalFormu" data-target=".bs-example-modal-lg">
-							<div data-dismiss="modal">
-								<div class="col-md-1"">
-									<i class="fa fa-hand-o-right" aria-hidden="true"></i>
-								</div>
-								<div class="col-md-9">
-									Continuar
-								</div>
-							</div>
+						<button type="button" class="btn btn-primary btn-lg aceptermsycond">
+								<i class="fa fa-hand-o-right" aria-hidden="true"></i>
+								Continuar
 						</button>
 					</div>
 				</div>
@@ -238,7 +232,25 @@
 				</div>
 			</div>
 		</div>
-
+	<!-- Data Tables -->
 	</section>
 
+
 {%endblock content%}
+	
+
+	{%block scripts%}
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.aceptermsycond').click(function(){
+					if ($('#checktyc').is(':checked')) {
+						$('#modalFinaciamiento').modal("toggle");
+						$('#modalFormu').modal("toggle");
+					} else {
+						alert("Debes aceptar terminos y condiciones")
+					}
+				})
+			})
+		</script>
+	{%endblock scripts%}	
+
