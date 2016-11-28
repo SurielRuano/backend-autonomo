@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+		Perfil - Contratos
+{% endblock title %}
+
+{% block styles %}
+	
+{% endblock styles %}
+
+{% block content %}
+
+<div class="container" style='min-height:400px;'>
+	
+
+	<div class="row">
+
+				<div class="col-md-12 text-center">
+			<br>
+			<h1>Area de contratos</h1>
+				</div>
+
+				<div class="col-md-12">
+
+
+					<table class="table">
+						
+						<thead>
+							<th>Referecia</th>						
+							<th>Contrato</th>
+							<th>Accion</th>
+						</thead>
+						<tbody>
+							{%for agreement in agreements%}
+							<tr>
+							<td>{{agreement.unique_id}}</td>
+							<td>{{agreement.id_vehicle_version.vehicle}}- {{agreement.id_vehicle_version}}</td>
+							<td>						
+
+									<div class="btn-group">
+									  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									    Action <span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu">
+									    <li class='agreementDetailModal'><button class="btn btn-info btn-block"type="button" data-toggle="modal" data-target="#detalleContrato{{forloop.counter}}">Ver más</button></li>
+									    <li><a class="btn btn-success btn-block"href="/accounts/profile/contratos/detallePagos">Ver pagos del contrato</a></li>
+									 
+									  </ul>
+									</div>
+
+							</td>
+
+
+									<div class="modal fade" id="detalleContrato{{forloop.counter}}" tabindex="-1" role="dialog">
+									  <div class="modal-dialog" role="document">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title">Detalle del contrato</h4>
+									      </div>
+									      <div class="modal-body">
+
+									      	<div class="row">
+
+									      		<div class="col-md-12"><img style="display:block;margin:0 auto;" height="150px" src="/media/{{agreement.id_vehicle_version.img_v1}}"></div>			
+									      		<div class="col-md-6">
+									      			
+									      			 <p><strong>Fecha de contrato: </strong>{{agreement.date}}</p>
+											         <p><strong>Vehiculo: </strong>{{agreement.id_vehicle_version.vehicle}}</p>
+											         <p><strong>Version de vehiculo:</strong> {{agreement.id_vehicle_version}}</p>
+											     
+
+									      		</div>
+									      		<div class="col-md-6">
+									      		    <p><strong>Financiamiento a: </strong>{{agreement.groups_stockexchange.stockexchange.monthly}} mensualidades</p>
+									        <p><strong>Ref contrato:</strong> {{agreement.unique_id}}</p>
+									        <p><strong>Adjudicado:</strong> {%if agreement.adjudication %}<strong class="text-success">Adjudicado</strong>{%else%}<strong class="text-danger">No Adjudicado</strong>{%endif%}</p>
+
+									      			
+									      		</div>
+
+									      		<div class="col-md-12">
+									      			
+									      				<p>Recuerda que tu fecha de pago es el dia <strong class="text-danger">{{agreement.payment_deadline|date:"j"}}</strong> de cada mes, se puntual y obten beneficios</p> 									      		
+									      		</div>
+									      	</div>
+									       
+									      </div>
+									      
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+									        <br>
+									        
+									    </div><!-- /.modal-content -->
+									  </div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
+
+							</tr>
+							{%endfor%}
+							
+						</tbody>
+
+					</table>
+					
+
+				</div>
+		
+
+	</div>
+
+
+</div>
+
+
+
+
+
+
+	
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script type="text/javascript">
+	
+
+	$(document).ready(function(){
+
+			
+			//$('#detalleContrato').modal('toggle')	
+
+		/*	$('.agreementDetailModal').click(function(){
+
+
+
+			$('#detalleContrato').modal('toggle');
+
+
+
+			})*/
+
+
+
+})
+
+
+</script>
+
+	
+{% endblock scripts %}
