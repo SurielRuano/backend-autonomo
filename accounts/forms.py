@@ -106,4 +106,8 @@ class ProofForm(forms.ModelForm):
     #     self.fields['address'].widget.attrs.update({'class' : 'form-control', 'rows' : 2})
     #     self.fields['phone_num'].widget.attrs.update({'class' : 'form-control'})
 
-    
+class VehicleFormVersion(forms.Form):
+  # vehicle_garage = forms.CharField(choices = 'Valor de el vehiculo')
+
+  def newfunction():
+    pass

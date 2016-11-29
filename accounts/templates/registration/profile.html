@@ -102,7 +102,7 @@
                                             			Este auto esta en Financiamiento
                                             		</a>
                                             	{%else%}
-                                            		<a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalFinaciamiento" data-vehicle-version="{{user.user_vehicle.id}}">
+                                            		<a class="btn btn-primary btn-lg btnAddToAgreement" data-toggle="modal" data-target="#modalFinaciamiento" data-vehicle-version="{{user.user_vehicle.id}}">
                                             			Empieza a Financiarlo
                                             		</a>
                                             	{%endif%}
@@ -241,6 +241,7 @@
 						<div class="modal-bodysf">
 							<form role="form" action="." method="post">
 							  	{%csrf_token%}
+							  	<!--<input type="hidden" name="" id="id_vehicleAgreement">-->
 							  	{{proof.as_p}}
 							  <input class="btn btn-primary" type="Submit" name="Salvar" placeholder="Guardar">
 							</form>
@@ -278,7 +279,12 @@
 						alert("Debes aceptar terminos y condiciones")
 					}
 				})
-
+				
+				$('.btnAddToAgreement').click(function(){
+					var = $(this).data('vehicleVersion');
+					$('#id_vehicleAgreement').val(var);
+					/*$('#modalAddToGarage').modal('toggle');*/
+				})
 			})
 		</script>
 	{%endblock scripts%}	
