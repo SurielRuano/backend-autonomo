@@ -69,7 +69,7 @@ class Agreement(models.Model):
 	BOOL_CHOICES = ((True, 'Activo'), (False, 'Finalizado'))	
 	zone = models.CharField(max_length=50)
 	observations = models.TextField()
-	date = models.DateField()
+	date = models.DateField(auto_now=True)
 	status = models.BooleanField()
 	BOOL_CHOICES2 = ((True, 'Adjudicado'),(False, 'No Adjudicado'))	
 	id_client = models.ForeignKey(Client, related_name='agreement')
