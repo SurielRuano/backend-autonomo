@@ -102,7 +102,9 @@
                                             			Este auto esta en Financiamiento
                                             		</a>
                                             	{%else%}
+
                                             		<a class="btn btn-primary btn-lg startFinance"  data-vehicle-version="{{ga.user_vehicle.id}}">
+
                                             			Empieza a Financiarlo
                                             		</a>
                                             	{%endif%}
@@ -130,6 +132,7 @@
 		                    		<div class="form-group">
 										{%csrf_token%}
 										{{userform.as_p}}
+										
 										<input class="btn btn-primary" type="Submit" name="Guardar" placeholder="Guardar Tu Informacion">
 		                    		</div>
 								</form>
@@ -266,6 +269,48 @@
 				</div>
 			</div>
 		</div>
+
+
+
+		<!-- Modal Formulario -->
+		<div class="modal fade bs-example-modal-lg" id="modalFormu" tabindex="-1" role="dialog" aria-labelledby="modalFormuLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="modalFormuLabel">
+							Felicidades estas por adquirir tu financiamiento
+						</h4>
+					</div>
+
+					<div class="modal-body">
+						<div class="modal-bodysf">
+							<form role="form" action="." method="post">
+							  	{%csrf_token%}
+							  	<input type="hidden" name="vehicle_input" id="id_vehicleAgreement" value="">
+							  	{{proof.as_p}}
+							  <input class="btn btn-primary" type="Submit" name="Salvar" placeholder="Guardar">
+							</form>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success btn-lg">
+							<div class="col-md-1">
+								<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
+							</div>
+							<div class="col-md-9">
+								Financiar							
+							</div>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Data Tables -->
+
 	</section>
 
 
@@ -275,7 +320,7 @@
 	{%block scripts%}
 		<script type="text/javascript">
 			$(document).ready(function(){
-				
+
 
 
 				$('.startFinance').click(function(){
@@ -289,6 +334,7 @@
 
 				$('#SendFormStartFinancial').click(function(){
 
+
 					if ($('#checktyc').is(':checked')) {
 					
 						$('#modalFormu').modal("toggle");
@@ -301,7 +347,7 @@
 
 
 				})
-
+				
 			})
 		</script>
 	{%endblock scripts%}	

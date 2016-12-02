@@ -100,10 +100,18 @@ class ProofForm(forms.ModelForm):
             )
 
 
+class VehicleFormVersion(forms.Form):
+  vehicle_garage = forms.CharField(max_length=4)
+
+  # def newfunction():
+  #   pass
+  #   
+  #   
+  #   
+  
+
 ###Funcion para modificar el formulario de 
     # def __init__(self, *args, **kwargs):
     #     super(ProofForm, self).__init__(*args, **kwargs)
     #     self.fields['address'].widget.attrs.update({'class' : 'form-control', 'rows' : 2})
     #     self.fields['phone_num'].widget.attrs.update({'class' : 'form-control'})
-
-    

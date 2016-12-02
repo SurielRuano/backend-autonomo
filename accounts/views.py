@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View
-from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm, ProofForm
+from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm, ProofForm, VehicleFormVersion
 from django.contrib.auth.models import User
 from clients.models import Client, Garage
 from vehicles.models import Vehicle_version
@@ -65,6 +65,8 @@ class ProfileView(View):
 		template_name= "registration/profile.html"
 		proof = ProofForm(instance=request.user.client)
 		userform = UserEditForm(instance=request.user)
+		#bajo el formulario para obtener el identificador de el vehiculo
+		vehicle_garage =  VehicleFormVersion()
 		# profile = ProfileEditForm(instance=request.user.client)
 		profile = Client.objects.get(user_client=request.user)
 		client = Client.objects.get(user_client=request.user)
@@ -73,19 +75,38 @@ class ProfileView(View):
 		'userform':userform,
 		'profile':profile,
 		'garage': garage,
-		'proof' : proof,		
+		'proof' : proof,
+		'vehicle_garage': vehicle_garage,		
 		}
 		return render(request, template_name, context)
 
 	def post(self,request):
+		id_vehicle = resquest.POST['id_vehicle']
+		print("Aqui esta el valor: " + id_vehicle)
 		template_name = "registration/profile.html"
-		#client_form = ProofForm()
-		proof = ProofForm(instance=request.user.client, data=request.POST)
-		if proof.is_valid():
-			proof.save()
-			return redirect('home')
-		else:
-			context = {
-			'proof':proof
-			}
-			return render(request, template_name,context)
+		# #client_form = ProofForm()
+		# proof = ProofForm(instance=request.user.client, data=request.POST)
+		# vehicle_garage = VehicleFormVersion(data=request.POST)
+		# #bajar modelo
+		# contrato = Agreement()
+		# if proof.is_valid() and vehicle_garage.is_valid():
+		# 	proof.save()
+		# 	vehicle = vehicle_garage.save(commit=False)
+
+
+		# 	client = Client.objects.get(user_client=request.user)
+		# 	carro_garage = Garage.objects..all().filter(user_garage = client)
+		# 	car_agreement = carro_garage.objects.get(carro_garage.id = vehicle.vehicle_garage)
+
+		# 	contrato.unique_id = 658941236587456398512548
+		# 	contrato.zone = 'Pachuca'
+		# 	contrato.observations = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+		# 	contrato.status = True
+		# 	contrato.id_client = request.user.client
+		# 	contrato.id_vehicle_version = 
+		# 	return redirect('home')
+		# else:
+		# 	context = {
+		# 	'proof':proof
+		# 	}
+		return render(request, template_name)
