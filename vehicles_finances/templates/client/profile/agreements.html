@@ -18,7 +18,7 @@
 
 				<div class="col-md-12 text-center">
 			<br>
-			<h1>Area de contratos</h1>
+			<h1>Mis contratos</h1>
 				</div>
 
 				<div class="col-md-12">
@@ -29,27 +29,17 @@
 						<thead>
 							<th>Referecia</th>						
 							<th>Contrato</th>
-							<th>Accion</th>
+							<th>Detalle</th>
+							<th>Pagos</th>
 						</thead>
 						<tbody>
 							{%for agreement in agreements%}
 							<tr>
 							<td>{{agreement.unique_id}}</td>
 							<td>{{agreement.id_vehicle_version.vehicle}}- {{agreement.id_vehicle_version}}</td>
-							<td>						
-
-									<div class="btn-group">
-									  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									    Action <span class="caret"></span>
-									  </button>
-									  <ul class="dropdown-menu">
-									    <li class='agreementDetailModal'><button class="btn btn-info btn-block"type="button" data-toggle="modal" data-target="#detalleContrato{{forloop.counter}}">Ver más</button></li>
-									    <li><a class="btn btn-success btn-block"href="/accounts/profile/contratos/detallePagos">Ver pagos del contrato</a></li>
-									 
-									  </ul>
-									</div>
-
-							</td>
+							
+							<td><button class="btn btn-info btn-block"type="button" data-toggle="modal" data-target="#detalleContrato{{forloop.counter}}">Ver más</button></td>
+							<td><a class="btn btn-success btn-block" href="/accounts/profile/contratos/detallePagos">Ver pagos del contrato</a></td>
 
 
 									<div class="modal fade" id="detalleContrato{{forloop.counter}}" tabindex="-1" role="dialog">
@@ -101,8 +91,14 @@
 						</tbody>
 
 					</table>
+
+
 					
 
+				</div>
+				<div class="col-md-12 text-center">
+					
+					<a class="btn btn-danger" href="{%url 'accounts:profile'%}">Regresar a Perfil</a>
 				</div>
 		
 
