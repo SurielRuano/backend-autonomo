@@ -102,7 +102,7 @@
                                             			Este auto esta en Financiamiento
                                             		</a>
                                             	{%else%}
-                                            		<a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalFinaciamiento" data-vehicle-version="{{user.user_vehicle.id}}">
+                                            		<a class="btn btn-primary btn-lg startFinance"  data-vehicle-version="{{ga.user_vehicle.id}}">
                                             			Empieza a Financiarlo
                                             		</a>
                                             	{%endif%}
@@ -169,16 +169,65 @@
 
 
 
-<!-- Inicio Modal Financiamiento -->
-		<div class="modal fade" id="modalFinaciamiento" tabindex="-1" role="dialog" aria-labelledby="modalFinaciamientoLabel">
+
+
+
+		<!-- Modal Formulario -->
+		<div class="modal fade bs-example-modal-lg" id="modalFormu" tabindex="-1" role="dialog" aria-labelledby="modalFormuLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="modalFormuLabel">
+							Necesitamos informacion tuya
+						</h4>
+					</div>
+
+					<div class="modal-body">
+					<p>Debes proporcionarnos la siguiente información para poder continuar con el proceso de financiamiento.</p>
+						<div class="modal-bodysf">
+							<form id='formStartFinance' role="form" action="." method="post">
+							  	{%csrf_token%}
+							  	{{proof.as_p}}
+							  	
+							  	<input type="hidden" id='id_vehicle_version' name="id_vehicle_version">
+							  
+							</form>
+						</div>
+					</div>
+
+					<div class="modal-footer">
+					
+							<label>
+						    	<input type="checkbox" value="" id="checktyc">
+						    	Acepto <a data-toggle="modal" data-target="#modalTerms" href="">Terminos y Condiciones </a>
+							</label>
+							<button type="button" id="SendFormStartFinancial" class="btn btn-success btn-lg ">
+							
+							 <i class="fa fa-shopping-cart" aria-hidden="true"></i> Financiar							
+						
+						</button>
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- Data Tables -->
+
+
+	<!-- Inicio Modal Financiamiento -->
+		<div class="modal fade" id="modalTerms" tabindex="-1" role="dialog" aria-labelledby="modalTermsLabel">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title" id="modalFinaciamientoLabel">
-							Felicidades estas por adquirir tu financiamiento
+						<h4 class="modal-title" id="modalTermsLabel">
+							Terminos y Condiciones
 						</h4>
 					</div>
 
@@ -206,61 +255,17 @@
 							<div>Eius ducimus, quas voluptas at nihil aliquam quod voluptates, repellendus consequatur dolore porro exercitationem aut molestias iste odio et, quam earum, enim nam fugit nostrum accusamus in vero voluptatum. Consequuntur.</div>
 							<div>Deleniti recusandae assumenda iste eveniet suscipit ullam ipsa voluptatibus ipsam eligendi neque veritatis fugiat vitae commodi, tempore, consequuntur repellendus voluptas accusantium aperiam maxime. Doloremque debitis in molestias ratione, quae ipsum.</div>
 						</div>
-						<div class="checkbox">
-							<label>
-						    	<input type="checkbox" value="" id="checktyc">
-						    	Acepto Terminos y Condiciones
-							</label>
-						</div>
+						
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary btn-lg aceptermsycond">
+						<button type="button" class="btn btn-primary btn-lg" data-dismiss='modal'>
 								<i class="fa fa-hand-o-right" aria-hidden="true"></i>
-								Continuar
+								Cerrar
 						</button>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
-		<!-- Modal Formulario -->
-		<div class="modal fade bs-example-modal-lg" id="modalFormu" tabindex="-1" role="dialog" aria-labelledby="modalFormuLabel">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title" id="modalFormuLabel">
-							Felicidades estas por adquirir tu financiamiento
-						</h4>
-					</div>
-
-					<div class="modal-body">
-						<div class="modal-bodysf">
-							<form role="form" action="." method="post">
-							  	{%csrf_token%}
-							  	{{proof.as_p}}
-							  <input class="btn btn-primary" type="Submit" name="Salvar" placeholder="Guardar">
-							</form>
-						</div>
-					</div>
-
-					<div class="modal-footer">
-						<button type="button" class="btn btn-success btn-lg">
-							<div class="col-md-1">
-								<i class="fa fa-shopping-cart" aria-hidden="true"></i> 
-							</div>
-							<div class="col-md-9">
-								Financiar							
-							</div>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	<!-- Data Tables -->
 	</section>
 
 
@@ -270,13 +275,31 @@
 	{%block scripts%}
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$('.aceptermsycond').click(function(){
+				
+
+
+				$('.startFinance').click(function(){
+
+					id_version = $(this).data('vehicleVersion');
+					$('#modalFormu').modal("toggle");
+					$('#id_vehicle_version').val(id_version);
+
+					
+				})
+
+				$('#SendFormStartFinancial').click(function(){
+
 					if ($('#checktyc').is(':checked')) {
-						$('#modalFinaciamiento').modal("toggle");
+					
 						$('#modalFormu').modal("toggle");
+						$('#formStartFinance').send()
 					} else {
 						alert("Debes aceptar terminos y condiciones")
 					}
+
+
+
+
 				})
 
 			})
