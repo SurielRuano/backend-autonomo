@@ -7,6 +7,8 @@ from vehicles.models import Vehicle_version
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
+from vehicles_finances.models import Agreement, groups_stockExchange
+
 
 ##Para utilizar el PDF
 from django.conf import settings
@@ -81,9 +83,22 @@ class ProfileView(View):
 		return render(request, template_name, context)
 
 	def post(self,request):
-		id_vehicle = resquest.POST['id_vehicle']
+		id_vehicle = request.POST['id_vehicle_version']
 		print("Aqui esta el valor: " + id_vehicle)
 		template_name = "registration/profile.html"
+		proof = ProofForm(instance=request.user.client, data=request.POST)
+
+		if proof.is_valid():
+			proof.save()
+			vehicle_ver = Vehicle_version.objects.get(id=id_vehicle)
+			group_stock = groups_stockExchange(unique_id='da135554-fe71-409e-bfc3-7380d4a1518c')
+			client = Client.objects.get(user_client=request.user)
+			agrement = Agreement.objects.create(id_client=client, id_vehicle_version=vehicle_ver, groups_stockexchange = group_stock)
+			agrement.save()
+			return redirect('accounts:profile')
+		else:
+			return redirect('home')
+
 		# #client_form = ProofForm()
 		# proof = ProofForm(instance=request.user.client, data=request.POST)
 		# vehicle_garage = VehicleFormVersion(data=request.POST)
@@ -109,4 +124,5 @@ class ProfileView(View):
 		# 	context = {
 		# 	'proof':proof
 		# 	}
-		return render(request, template_name)
+			# return render(request, template_name)
+		return redirect ('accounts:profile')

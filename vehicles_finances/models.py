@@ -67,16 +67,16 @@ class Agreement(models.Model):
 
 	unique_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)	
 	BOOL_CHOICES = ((True, 'Activo'), (False, 'Finalizado'))	
-	zone = models.CharField(max_length=50)
-	observations = models.TextField()
+	zone = models.CharField(max_length=50, blank=True, null=True)
+	observations = models.TextField(blank=True, null=True)
 	date = models.DateField(auto_now=True)
-	status = models.BooleanField()
+	status = models.BooleanField(default=False)
 	BOOL_CHOICES2 = ((True, 'Adjudicado'),(False, 'No Adjudicado'))	
 	id_client = models.ForeignKey(Client, related_name='agreement')
 	id_vehicle_version = models.ForeignKey(Vehicle_version, related_name='agreement')
 	groups_stockexchange = models.ForeignKey(groups_stockExchange, related_name='agreement')
-	vehicle_price = models.FloatField()
-	payment_deadline = models.DateField()
+	vehicle_price = models.FloatField(blank=True, null=True)
+	payment_deadline = models.DateField(auto_now=True)
 	adjudication = models.BooleanField(choices=BOOL_CHOICES2, default=False)
 	##Camos de contrato	
 

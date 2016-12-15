@@ -104,3 +104,13 @@ ENV/
 #ignorar pychache
 
 *.pyc
+
+# Ignorar Migraciones
+
+*/migrations
+
+#Ignorar base de datos
+
+db.sqlite3
+
+
