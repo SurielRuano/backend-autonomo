@@ -3,7 +3,7 @@ from django.db import models
 from django.conf import settings
 
 
-
+#####
 class trademark(models.Model):
 	name = models.CharField(max_length=60)
 	logo = models.ImageField(upload_to="assets/trademark", blank=True, null=True)
@@ -12,6 +12,8 @@ class trademark(models.Model):
 		return self.name
 
 
+
+######
 class Vehicle(models.Model):
 
 	STATUS_CHOICES = (('unpublished','Unpublished'),('published','Published'),)

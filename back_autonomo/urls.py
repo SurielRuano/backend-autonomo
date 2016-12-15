@@ -23,6 +23,7 @@ from django.views.static import serve
 
 
 urlpatterns = [
+    """Urls principales"""
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(accUrls, namespace="accounts")),
     url(r'^catalogo/', include(vehicles, namespace="catalogo")),   

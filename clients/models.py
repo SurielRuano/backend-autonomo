@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from vehicles.models import Vehicle_version
 from django.conf import settings
 
-
+#############
 # Create your models here.
 class Client(models.Model):
 	BOOL_CHOICES = ((True, 'Activo'), (False, 'Inactivo'))

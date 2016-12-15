@@ -108,7 +108,7 @@ class ProfileView(View):
 		# 	proof.save()
 		# 	vehicle = vehicle_garage.save(commit=False)
 
-
+		######
 		# 	client = Client.objects.get(user_client=request.user)
 		# 	carro_garage = Garage.objects..all().filter(user_garage = client)
 		# 	car_agreement = carro_garage.objects.get(carro_garage.id = vehicle.vehicle_garage)

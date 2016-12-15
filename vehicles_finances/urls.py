@@ -3,7 +3,7 @@ from . import views
 
 
 
-
+#####
 urlpatterns = [
 
 	url(r'^contratos/$', views.contratList.as_view(), name='agreement'),

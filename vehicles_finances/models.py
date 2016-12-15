@@ -9,6 +9,7 @@ import uuid
 class StockExchange(models.Model):
 	
 	##Tipo de mensualidad 60 o 40 mensualidades
+	######
 	description = models.TextField()	
 	monthly = models.IntegerField()
 
